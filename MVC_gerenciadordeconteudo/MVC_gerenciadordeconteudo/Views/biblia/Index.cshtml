@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    List<negocio.livro> livro = ViewBag.livro;
+    List<negocio.versiculo> capitulos = ViewBag.capitulo;
+}
+
+@section css {
+ <link rel="stylesheet" href="~/Styles/efeito.css" />    
+<script type="text/javascript" src="~/Scripts/efeito_som.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.js"></script>
+<script type="text/JavaScript" src="~/Scripts/som.js">  </script>
+
+}
+
+
+
+
+
+    <div class="jumbotron">
+
+        <div id="pagina">
+
+            @foreach (var l in livro) {
+            <div class="caixa">
+                <a href="/biblia/@l.Nome/capitulo">
+                    <div class="titulo">@l.Nome</div>
+                </a>
+                <div class="conteudo hide">
+                    @foreach (var c in capitulos)
+                    {
+                        <p>
+                            @c.Capitulo
+                        </p>
+                    }  
+                </div>
+            </div>
+            }
+
+            <div class="caixa">
+               
+                <div class="titulo">livros</div>
+                <div class="conteudo show">
+                   
+                </div>
+            </div>
+
+          
+
+        </div>
+
+       
+
+    </div>
+

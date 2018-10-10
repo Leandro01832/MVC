@@ -1,0 +1,96 @@
+﻿body {
+   background-color: #98983f;
+	background-image: linear-gradient(to bottom, #b2cd52 30%, #98983f 70%);
+	background-attachment: fixed;
+
+}
+
+
+
+.container{
+background-color:  #cbcb45;
+
+}
+
+.cabecalho{
+background: #cbcb45;
+}
+
+p{
+    color: black;
+}
+
+#logo{
+    position: absolute;
+    left: 1400px;
+    bottom: 500px;
+}
+
+ .container {
+     margin: auto;
+     width: 960px;
+ }
+ .top-bar{
+     width: 100%;
+     height: 30px;
+     background: #141414;
+     color: #888;
+     line-height: 30px;
+ }
+ .top-bar .player-controls {
+     float: left;
+ }
+ .top-bar .player-controls span{
+     cursor: pointer;
+     padding: 0 5px;
+     -webkit-transition: all linear 0.2s;
+ }
+ .top-bar .player-controls span:hover {
+     color: #EEE;
+ }
+.top-bar .player-display {
+     float: left;
+     float: right;
+     margin-left: 50px;
+ }
+ .top-bar .player-display .player-current-track {
+     color: white;
+ }
+ .top-bar .player {
+     float: left;
+ }
+ .top-bar .player-timeline {
+     float: left;
+     max-width: 200px;
+     width: 200px;
+     height: 4px;
+    margin-top: 13px;
+     background: #555;
+     margin-left: 20px;
+ }
+ .top-bar .player-timeline-control {
+     height: 4px;
+     background: #999;
+ }
+
+.play ul{
+     list-style: none;
+     padding: 0px;
+ }
+
+ .play li :hover{
+     background:#eee;
+     border-bottom: solid 1px #f60;
+ }
+
+ .play li{
+     width: 20%;
+     padding: 5px;
+     border-bottom: solid 1px #ccc;
+ }
+
+ .play .active a{
+     color: #f60;
+     padding-left:1px;
+     font-style: italic;
+ }

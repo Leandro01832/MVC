@@ -1,0 +1,702 @@
+﻿@{
+    ViewBag.Title = "Cadastro";
+    List<business.classes.Pessoa> pessoas = ViewBag.gente;   
+}
+
+@section css {
+    <link rel="stylesheet" href="~/Styles/efeito.css" />
+<script type="text/javascript" src="~/Scripts/efeito_som.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.js"></script>
+<script type="text/JavaScript" src="~/Scripts/som.js">  </script>
+}
+
+<div class="jumbotron">
+
+    <div>
+        <a href="/pessoas/visitante" class="btn btn-default">Cadastrar como visitante</a>
+    </div>  
+    
+    <div>
+        <a href="/pessoas/crianca" class="btn btn-default">Cadastrar como criança [De 0 a 9 anos de idade]</a>
+    </div> 
+
+    <div>
+        <a href="/pessoas/membro_batismo" class="btn btn-default">Cadastrar como membro por batismo</a>
+    </div>
+
+    <div>
+        <a href="/pessoas/membro_transferencia" class="btn btn-default">Cadastrar como membro por transferência</a>
+    </div>
+
+    <div>
+        <a href="/pessoas/membro_aclamacao" class="btn btn-default">Cadastrar como membro por aclamação</a>
+    </div>
+
+    <div>
+        <a href="/pessoas/membro_reconciliacao" class="btn btn-default">Cadastrar como membro por reconciliação</a>
+    </div>
+        
+    <h3>
+        Pessoas da primeira Igreja Batista de Cataguases
+    </h3>
+    <div id="pagina">         
+
+        <div class="caixa">
+            @{
+                negocio.gerenciamento negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("A");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'A'</div>
+            <div class="conteudo show">
+                <table class="table-responsive">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                            
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("B");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'B'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{ 
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("C");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'C'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("D");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'D'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("E");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'E'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("F");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'F'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("G");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'G'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("H");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'H'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("I");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'I'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("J");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'J'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("K");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'K'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("L");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'L'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("M");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'M'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("N");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'N'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("O");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'O'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("P");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'P'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("Q");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'Q'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("R");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'R'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("S");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'S'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("T");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'T'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("U");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'U'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("V");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'V'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("X");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'X'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("W");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'W'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="caixa">
+            @{
+                negocio = new negocio.gerenciamento();
+                ViewBag.gente = negocio.pessoas("Z");
+                pessoas = ViewBag.gente;
+            }
+            <div class="titulo">Nomes que começam com a letra 'Z'</div>
+            <div class="conteudo hide">
+                <table class="table-bordered">
+                    <tr>
+                        <td>Nome</td>
+                        <td>ID</td>
+                        <td></td>
+                    </tr>
+                    @foreach (var p in pessoas)
+                    {
+                        <tr>
+                            <td>@p.Nome</td>
+                            <td>@p.Id_pessoa</td>
+                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+    </div>
+  
+  
+
+
+ 
+</div>
+

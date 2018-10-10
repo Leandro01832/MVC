@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_gerenciadordeconteudo", "MVC_gerenciadordeconteudo\MVC_gerenciadordeconteudo.csproj", "{1165BD60-AFC4-44EA-B8CE-3AF9C2B8539C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocio", "negocio\negocio.csproj", "{4D8CCC8A-9489-490D-8152-C439319F34FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "banco", "banco\banco.csproj", "{8B6EDC8E-0329-4028-A04E-7FBBA3AAC2A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1165BD60-AFC4-44EA-B8CE-3AF9C2B8539C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1165BD60-AFC4-44EA-B8CE-3AF9C2B8539C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1165BD60-AFC4-44EA-B8CE-3AF9C2B8539C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1165BD60-AFC4-44EA-B8CE-3AF9C2B8539C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D8CCC8A-9489-490D-8152-C439319F34FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D8CCC8A-9489-490D-8152-C439319F34FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D8CCC8A-9489-490D-8152-C439319F34FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D8CCC8A-9489-490D-8152-C439319F34FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B6EDC8E-0329-4028-A04E-7FBBA3AAC2A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B6EDC8E-0329-4028-A04E-7FBBA3AAC2A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B6EDC8E-0329-4028-A04E-7FBBA3AAC2A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B6EDC8E-0329-4028-A04E-7FBBA3AAC2A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

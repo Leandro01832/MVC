@@ -1,0 +1,10 @@
+C:\Users\leand\documents\visual studio 2015\Projects\MVC_gerenciadordeconteudo\banco\bin\Debug\banco.dll
+C:\Users\leand\documents\visual studio 2015\Projects\MVC_gerenciadordeconteudo\banco\bin\Debug\banco.pdb
+C:\Users\leand\documents\visual studio 2015\Projects\MVC_gerenciadordeconteudo\banco\bin\Debug\business.dll
+C:\Users\leand\documents\visual studio 2015\Projects\MVC_gerenciadordeconteudo\banco\bin\Debug\database.dll
+C:\Users\leand\documents\visual studio 2015\Projects\MVC_gerenciadordeconteudo\banco\bin\Debug\business.pdb
+C:\Users\leand\documents\visual studio 2015\Projects\MVC_gerenciadordeconteudo\banco\bin\Debug\database.pdb
+C:\Users\leand\documents\visual studio 2015\Projects\MVC_gerenciadordeconteudo\banco\obj\Debug\banco.dll
+C:\Users\leand\documents\visual studio 2015\Projects\MVC_gerenciadordeconteudo\banco\obj\Debug\banco.pdb
+C:\Users\leand\documents\visual studio 2015\Projects\MVC_gerenciadordeconteudo\banco\obj\Debug\banco.csprojResolveAssemblyReference.cache
+C:\Users\leand\documents\visual studio 2015\Projects\MVC_gerenciadordeconteudo\banco\bin\Debug\MySql.Data.dll
