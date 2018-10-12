@@ -275,11 +275,14 @@
     <Content Include="Scripts\script.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="sons\Aline Barros Sonda me, Usa me.mp3" />
+    <Content Include="sons\Deus cuida de mim - kleber Lucas.mp3" />
     <Content Include="sons\Fernandinho - Grandes Coisas %28DVD Uma Nova História%29.mp3" />
     <Content Include="sons\Fernandinho - Nada Além Do Sangue.mp3" />
     <Content Include="sons\Fernandinho - Todas as Coisas %28DVD Uma Nova História%29.mp3" />
     <Content Include="sons\NANI AZEVEDO - NÃO TEMAS.mp3" />
     <Content Include="sons\Nani Azevedo Atrai Meu Coracao.mp3" />
+    <Content Include="sons\Quero descer - Raquel Mello e Nani Azevedo.mp3" />
+    <Content Include="Styles\biblia.css" />
     <Content Include="Styles\menusom.css" />
     <Content Include="Styles\main.css" />
     <Content Include="Styles\efeito.css" />
@@ -327,6 +330,8 @@
     <Content Include="Views\pessoas\membro_reconciliacao.cshtml" />
     <Content Include="Views\pessoas\editar.cshtml" />
     <Content Include="Views\biblia\Index.cshtml" />
+    <Content Include="Views\biblia\capitulo.cshtml" />
+    <Content Include="Views\biblia\versiculo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

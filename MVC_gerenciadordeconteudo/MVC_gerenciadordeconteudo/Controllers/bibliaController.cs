@@ -10,22 +10,33 @@ namespace MVC_gerenciadordeconteudo.Controllers
     public class bibliaController : Controller
     {
         // GET: biblia
-        public ActionResult Index(string nome)
+        public ActionResult Index()
         {
             livro livro = new livro();
             ViewBag.livro = livro.listarlivros();
-            versiculo vers = new versiculo();
-            ViewBag.capitulo = vers.capitulos(nome);
+            //versiculo vers = new versiculo();
+            //ViewBag.capitulo = vers.capitulos(nome);            
             return View();
         }
 
-        public void capitulo(string nome)
+        public ActionResult capitulo(string nome)
+        {
+            livro livro = new livro();
+            ViewBag.livro = livro.listarlivros();
+            versiculo vers = new versiculo();
+            ViewBag.capitulo = vers.capitulos(nome);            
+            return View();
+        }
+
+        public ActionResult versiculo(string nome, int capitulo)
         {
             livro livro = new livro();
             ViewBag.livro = livro.listarlivros();
             versiculo vers = new versiculo();
             ViewBag.capitulo = vers.capitulos(nome);
-            
+            ViewBag.versiculo = vers.listar_versiculos(nome, capitulo);
+            return View();
         }
+
     }
 }

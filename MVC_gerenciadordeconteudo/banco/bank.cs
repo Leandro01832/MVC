@@ -41,6 +41,13 @@ namespace banco
             return data;
         }
 
+        public DataTable versiculos_capitulos_livros(string nome, int capitulo)
+        {
+            DataTable data = dados.listar("SELECT ver_versiculo, ver_texto FROM `versiculos` AS V INNER JOIN livros AS L ON L.liv_id=V.ver_liv_id WHERE liv_nome='" + nome + "' and ver_vrs_id=0 AND ver_capitulo=" + capitulo.ToString(), false, false, false, null);
+
+            return data;
+        }
+
 
 
     }

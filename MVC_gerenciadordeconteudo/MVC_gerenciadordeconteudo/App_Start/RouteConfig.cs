@@ -29,8 +29,8 @@ namespace MVC_gerenciadordeconteudo
 
             routes.MapRoute(
            "biblia",
-           "biblia/{nome}/capitulo",
-           new { controller = "biblia", action = "Index", nome = "" }
+           "biblia",
+           new { controller = "biblia", action = "Index"}
       );
 
             routes.MapRoute(
@@ -38,6 +38,18 @@ namespace MVC_gerenciadordeconteudo
          "biblia/{nome}/capitulo",
          new { controller = "biblia", action = "capitulo", nome = "" }
     );
+
+            routes.MapRoute(
+     "biblia_capitulo_versiculo_2",
+     "biblia/{nome}/{capitulo}",
+     new { controller = "biblia", action = "versiculo", nome = "", capitulo = 0 }
+);
+
+            routes.MapRoute(
+       "biblia_capitulo_versiculo",
+       "biblia/{nome}/{capitulo}/versiculo",
+       new { controller = "biblia", action = "versiculo", nome = "", capitulo = 0 }
+  );
 
             routes.MapRoute(
               "pessoas",

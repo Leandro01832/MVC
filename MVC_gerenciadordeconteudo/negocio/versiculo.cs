@@ -11,6 +11,8 @@ namespace negocio
    public class versiculo
     {
         private int capitulo;
+        private int numero_versiculo;
+        private string texto;
 
         public int Capitulo
         {
@@ -22,6 +24,32 @@ namespace negocio
             set
             {
                 capitulo = value;
+            }
+        }
+
+        public int Numero_versiculo
+        {
+            get
+            {
+                return numero_versiculo;
+            }
+
+            set
+            {
+                numero_versiculo = value;
+            }
+        }
+
+        public string Texto
+        {
+            get
+            {
+                return texto;
+            }
+
+            set
+            {
+                texto = value;
             }
         }
 
@@ -39,6 +67,22 @@ namespace negocio
             }
 
             return capitulos;
+        }
+
+        public List<versiculo> listar_versiculos(string nome, int capitulo)
+        {
+            bank b = new bank();
+            DataTable datatable = b.versiculos_capitulos_livros(nome, capitulo);
+            List<versiculo> versiculo = new List<versiculo>();
+            foreach (DataRow dtrow in datatable.Rows)
+            {
+                versiculo vers = new versiculo();                
+                vers.numero_versiculo = int.Parse(dtrow["ver_versiculo"].ToString());
+                vers.Texto = dtrow["ver_texto"].ToString();
+                versiculo.Add(vers);
+            }
+
+            return versiculo;
         }
     }
 }

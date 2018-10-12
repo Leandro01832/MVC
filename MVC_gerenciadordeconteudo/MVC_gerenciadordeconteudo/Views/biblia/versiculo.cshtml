@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    List<negocio.livro> livro = ViewBag.livro;
+    List<negocio.versiculo> capitulos = ViewBag.capitulo;
+    List<negocio.versiculo> versiculo = ViewBag.versiculo;
+    negocio.livro liv;
+    liv = new negocio.livro();
+    
+}
+
+@section css {
+ <link rel="stylesheet" href="~/Styles/biblia.css" />
+<script type="text/javascript" src="~/Scripts/efeito_som.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.js"></script>
+<script type="text/JavaScript" src="~/Scripts/som.js">  </script>
+
+}      
+
+    <div class="jumbotron">
+         <ul >
+             @foreach (var c in livro)
+             {
+                <li id="livro">
+                    <a class="btn btn-default" href="/biblia/@c.Nome/capitulo?valor=@c.Nome">@c.Nome</a>
+                </li>
+                   
+             }
+            
+                 @foreach (var ca in capitulos)
+                 {
+                  <li id="capitulo">
+                      <a class="btn btn-default" href="/biblia/@Request.QueryString["livro"]/@ca.Capitulo/versiculo?livro=@Request.QueryString["livro"]&capitulo=@ca.Capitulo">@ca.Capitulo</a>
+                  </li>                    
+                 }                   
+                         
+         </ul>
+          @{
+               
+            <p>Versiculos do capitulo @Request.QueryString["capitulo"] do livro @Request.QueryString["livro"]</p>
+        }
+       
+
+        <ul>
+            @foreach (var v in versiculo)
+            { 
+                <li id="capitulo">
+                    <p> @v.Numero_versiculo - @v.Texto</p>
+                </li>
+            }
+        </ul>
+    </div>
+
