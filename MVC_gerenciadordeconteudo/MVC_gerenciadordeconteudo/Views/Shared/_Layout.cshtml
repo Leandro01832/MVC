@@ -16,69 +16,72 @@
 
 </head>
 <body>
-    <audio id="audio"  controls>
-        <source id="som" src="~/sons/Aline Barros - Sonda-me, Usa-me.mp3" />                  
-    </audio> 
-    
-    <div id="pagina">
-        <table>
-            <tr>
-                <td>
-                    <div class="caixa_som">
+    <nav class="navbar navbar-fixed-top">
+        <div>
+            <audio id="audio" controls>
+                <source id="som" src="~/sons/Aline Barros - Sonda-me, Usa-me.mp3" />
+            </audio>
+        </div>          
 
-                        <div class="titulo">Aline Barros</div>
-                        <div class="conteudo show">
-                            <ul class="playlist">                                 
-                                <li><a id="link" href="~/sons/Aline Barros Sonda me, Usa me.mp3">Sonda-me, Usa-me</a> </li>                                 
-                            </ul>
+        <div id="">
+            <table id="pagina">
+                <tr>
+                    <td>
+                        <div class="caixa_som">
+
+                            <div class="titulo">Aline Barros</div>
+                            <div class="conteudo show">
+                                <ul class="playlist">
+                                    <li><a id="link" href="~/sons/Aline Barros Sonda me, Usa me.mp3">Sonda-me, Usa-me</a> </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div> 
-                </td>
+                    </td>
 
-                <td>
-                    <div class="caixa_som">
+                    <td>
+                        <div class="caixa_som">
 
-                        <div class="titulo">Fernandinho</div>
-                        <div class="conteudo hide">
-                            <ul class="playlist">                             
-                                <li><a id="link" href="~/sons/Fernandinho - Grandes Coisas (DVD Uma Nova História).mp3">grandes coisas</a> </li>
-                                <li><a id="link" href="~/sons/Fernandinho - Todas as Coisas (DVD Uma Nova História).mp3">todas as coisas</a> </li>
-                                <li><a id="link" href="~/sons/Fernandinho - Nada Além Do Sangue.mp3">Nada Alem do Sangue</a> </li>
-                            </ul>
+                            <div class="titulo">Fernandinho</div>
+                            <div class="conteudo hide">
+                                <ul class="playlist">
+                                    <li><a id="link" href="~/sons/Fernandinho - Grandes Coisas (DVD Uma Nova História).mp3">grandes coisas</a> </li>
+                                    <li><a id="link" href="~/sons/Fernandinho - Todas as Coisas (DVD Uma Nova História).mp3">todas as coisas</a> </li>
+                                    <li><a id="link" href="~/sons/Fernandinho - Nada Além Do Sangue.mp3">Nada Alem do Sangue</a> </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div> 
-                </td>
+                    </td>
 
-                <td>
-                    <div class="caixa_som">
+                    <td>
+                        <div class="caixa_som">
 
-                        <div class="titulo">Nani Azevedo</div>
-                        <div class="conteudo hide">
-                            <ul class="playlist">
-                                <li><a id="link" href="~/sons/Nani Azevedo Atrai Meu Coracao.mp3">Atrai meu coração</a></li>  
-                                <li><a id="link" href="~/sons/NANI AZEVEDO - NÃO TEMAS.mp3">Não Temas</a></li>  
-                                <li><a id="link" href="~/sons/Quero descer - Raquel Mello e Nani Azevedo.mp3">Quero descer</a></li>                              
-                            </ul>
+                            <div class="titulo">Nani Azevedo</div>
+                            <div class="conteudo hide">
+                                <ul class="playlist">
+                                    <li><a id="link" href="~/sons/Nani Azevedo Atrai Meu Coracao.mp3">Atrai meu coração</a></li>
+                                    <li><a id="link" href="~/sons/NANI AZEVEDO - NÃO TEMAS.mp3">Não Temas</a></li>
+                                    <li><a id="link" href="~/sons/Quero descer - Raquel Mello e Nani Azevedo.mp3">Quero descer</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </td>
+                    </td>
 
-                <td>
-                    <div class="caixa_som">
+                    <td>
+                        <div class="caixa_som">
 
-                        <div class="titulo">Kleber Lucas</div>
-                        <div class="conteudo hide">
-                            <ul class="playlist">
-                                <li><a id="link" href="~/sons/Deus cuida de mim - kleber Lucas.mp3">Deus cuida de mim</a></li>                               
-                            </ul>
+                            <div class="titulo">Kleber Lucas</div>
+                            <div class="conteudo hide">
+                                <ul class="playlist">
+                                    <li><a id="link" href="~/sons/Deus cuida de mim - kleber Lucas.mp3">Deus cuida de mim</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-        </table>                       
-    </div>  
-    
-        <div class=".top-bar .player-display .player-current-track">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="conteudo">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -98,15 +101,22 @@
                 </div>
             </div>
         </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year - Primeira Igreja Batista de Cataguases</p>
-            </footer>
-        </div>
 
         <img id="logo" class="img-responsive" src="~/figura/logo.png" alt="" width="100" />
+
+    </nav>    
+       <br /><br /><br /><br /><br /><br /><br />
+    <div class="container body-content">
+        
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Day/@DateTime.Now.Month/@DateTime.Now.Year - Primeira Igreja Batista de Cataguases</p>
+        </footer>
+    </div>
+
+    
+       
 
 
         @Scripts.Render("~/bundles/jquery")

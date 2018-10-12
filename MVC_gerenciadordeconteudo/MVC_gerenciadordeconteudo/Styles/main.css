@@ -22,8 +22,8 @@ p{
 
 #logo{
     position: absolute;
-    left: 1400px;
-    bottom: 500px;
+    left: 1300px;
+    bottom:10px;
 }
 
  .container {
@@ -93,4 +93,14 @@ p{
      color: #f60;
      padding-left:1px;
      font-style: italic;
+ }
+
+ .conteudo{
+     bottom: 80px;
+ }
+
+ .navbar{    
+	background-color: #98983f;
+	background-image: linear-gradient(to bottom, #b2cd52 30%, #98983f 70%);
+	background-attachment: fixed;
  }

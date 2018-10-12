@@ -1,6 +1,6 @@
 ﻿
 #pagina{
-	width: 800px; 
+	width: 1000px; 
 	margin:100px auto 0;
 }
 
@@ -31,10 +31,12 @@
 	font-weight:bold;
     font:20px "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
+
 #pagina .caixa .titulo:hover{
 	cursor:pointer; 
 	background:#b2cd52;
 }
+
 #pagina .caixa .conteudo{
 	padding:20px; 
 	line-height:150%;
