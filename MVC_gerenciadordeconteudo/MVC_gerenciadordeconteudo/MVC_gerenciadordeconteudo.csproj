@@ -221,6 +221,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\remessa.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -233,10 +236,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\pessoas\teste.aspx.cs">
+      <DependentUpon>teste.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\pessoas\teste.aspx.designer.cs">
+      <DependentUpon>teste.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="figura\familia.jpg" />
     <Content Include="figura\logo.png" />
@@ -245,8 +254,14 @@
     <Content Include="Content\Site.css" />
     <Content Include="Imagens\WIN_20180702_13_32_30_Pro.jpg" />
     <Content Include="Imagens\WIN_20180907_08_57_51_Pro.jpg" />
+    <Content Include="obj\Debug\MVC_gerenciadordeconteudo.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\MVC_gerenciadordeconteudo.dll" />
+    <Content Include="obj\Debug\MVC_gerenciadordeconteudo.pdb" />
+    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\carousel.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\menu_efeito_som .js" />
     <Content Include="Scripts\efeito_som.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -254,6 +269,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\MVC_gerenciadordeconteudo.csproj.GenerateResource.Cache" />
+    <Content Include="obj\Debug\MVC_gerenciadordeconteudo.csprojResolveAssemblyReference.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -269,6 +289,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\som.js" />
@@ -282,11 +303,15 @@
     <Content Include="sons\NANI AZEVEDO - NÃO TEMAS.mp3" />
     <Content Include="sons\Nani Azevedo Atrai Meu Coracao.mp3" />
     <Content Include="sons\Quero descer - Raquel Mello e Nani Azevedo.mp3" />
+    <Content Include="Styles\sobre.css" />
+    <Content Include="Styles\carousel.css" />
     <Content Include="Styles\biblia.css" />
+    <Content Include="Styles\efeito_cadastro.css" />
     <Content Include="Styles\menusom.css" />
     <Content Include="Styles\main.css" />
     <Content Include="Styles\efeito.css" />
     <Content Include="Styles\principal.css" />
+    <Content Include="Views\pessoas\teste.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -345,6 +370,7 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="obj\Debug\MVC_gerenciadordeconteudo.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

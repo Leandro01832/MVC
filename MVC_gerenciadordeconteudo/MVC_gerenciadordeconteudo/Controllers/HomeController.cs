@@ -20,7 +20,7 @@ namespace MVC_gerenciadordeconteudo.Controllers
             return View();
         }
 
-        public ActionResult About(int id)
+        public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 

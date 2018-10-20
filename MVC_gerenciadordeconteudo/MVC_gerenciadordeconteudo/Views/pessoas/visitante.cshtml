@@ -2,9 +2,11 @@
 
 @section css {     
     <script type="text/javascript" src="~/Scripts/cep.js"></script>
-}
+}    
 
 <div class="jumbotron">
+    <h1>Cadastro de visitante</h1>
+
     <h1><a href="/pessoas" class="btn btn-default">voltar</a></h1>
     
     <form action="/pessoas/criar_visitante" method="post" enctype="multipart/form-data">
@@ -151,7 +153,7 @@
         
         <div class="form-group">
             <label for="foto">Foto</label>
-            <input type="file" class="form-control-file" id="arquivo" name="arquivo">
+            <input type="file" class="form-control-file" id="arquivo" name="arquivo" required>
             <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
         </div>  
 

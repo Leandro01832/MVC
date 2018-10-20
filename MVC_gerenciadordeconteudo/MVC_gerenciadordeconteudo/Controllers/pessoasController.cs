@@ -63,18 +63,15 @@ namespace MVC_gerenciadordeconteudo.Controllers
 
         [HttpPost]
         public void Criar_visitante(remessa arq)
-        {
-           // string caminhoarquivo = AppDomain.CurrentDomain.BaseDirectory + System.Configuration.ConfigurationManager.AppSettings["caminhoarquivo"];
-            
+        {           
             string nomearquivo;
             if(arq.arquivo.ContentLength > 0)
             {
                 nomearquivo = Path.GetFileName(arq.arquivo.FileName);
                caminho  = Path.Combine(Server.MapPath("~/Imagens"), nomearquivo);
                 arq.arquivo.SaveAs(caminho);
-            }
-
-           
+            }           
+                       
             Visitante visi = new Visitante();            
             visi.Nome = Request["nome"];
             visi.Rg = Request["rg"];
@@ -97,19 +94,27 @@ namespace MVC_gerenciadordeconteudo.Controllers
             visi.Fone = Request["telefone"];
             visi.Celular = Request["celular"];
             visi.Whatsapp = Request["whatsapp"];
-            visi.Img = Request["foto"];
+            visi.Img = caminho;
             visi.Data_visita = Convert.ToDateTime(Request["data_visita"]);
             visi.Condicao_religiosa = Request["condicao_religiosa"];
-            visi.bd.montar_sql(visi.salvar(), null, null);
+            visi.bd.montar_sql(visi.salvar(), null, null, false);
             PictureBox img = new PictureBox();
             img.ImageLocation = caminho;
-            visi.bd.montar_sql("", img, null);
+            visi.bd.montar_sql("", img, null, true);
             Response.Redirect("/pessoas");
         }
 
         [HttpPost]
-        public void Criar_crianca()
+        public void Criar_crianca(remessa arq)
         {
+            string nomearquivo;
+            if (arq.arquivo.ContentLength > 0)
+            {
+                nomearquivo = Path.GetFileName(arq.arquivo.FileName);
+                caminho = Path.Combine(Server.MapPath("~/Imagens"), nomearquivo);
+                arq.arquivo.SaveAs(caminho);
+            }
+
             Crianca cri = new Crianca();
             cri.Nome = Request["nome"];
             cri.Rg = Request["rg"];
@@ -136,13 +141,24 @@ namespace MVC_gerenciadordeconteudo.Controllers
             cri.Img = Request["foto"];
             cri.Nome_mae = Request["mae"];
             cri.Nome_pai = Request["pai"];
-            cri.bd.montar_sql(cri.salvar(), null, null);
+            cri.bd.montar_sql(cri.salvar(), null, null, false);
+            PictureBox img = new PictureBox();
+            img.ImageLocation = caminho;
+            cri.bd.montar_sql("", img, null, true);
             Response.Redirect("/pessoas");
         }
 
         [HttpPost]
-        public void Criar_membro_batismo()
+        public void Criar_membro_batismo(remessa arq)
         {
+            string nomearquivo;
+            if (arq.arquivo.ContentLength > 0)
+            {
+                nomearquivo = Path.GetFileName(arq.arquivo.FileName);
+                caminho = Path.Combine(Server.MapPath("~/Imagens"), nomearquivo);
+                arq.arquivo.SaveAs(caminho);
+            }
+
             Membro_Batismo mem = new Membro_Batismo();
             mem.Nome = Request["nome"];
             mem.Rg = Request["rg"];
@@ -167,13 +183,24 @@ namespace MVC_gerenciadordeconteudo.Controllers
             mem.Whatsapp = Request["whatsapp"];
             mem.Img = Request["foto"];
             mem.Data_batismo = int.Parse(Request["batismo"]);
-            mem.bd.montar_sql(mem.salvar(), null, null);
+            mem.bd.montar_sql(mem.salvar(), null, null, false);
+            PictureBox img = new PictureBox();
+            img.ImageLocation = caminho;
+            mem.bd.montar_sql("", img, null, true);
             Response.Redirect("/pessoas");
         }
 
         [HttpPost]
-        public void Criar_membro_transferencia()
+        public void Criar_membro_transferencia(remessa arq)
         {
+            string nomearquivo;
+            if (arq.arquivo.ContentLength > 0)
+            {
+                nomearquivo = Path.GetFileName(arq.arquivo.FileName);
+                caminho = Path.Combine(Server.MapPath("~/Imagens"), nomearquivo);
+                arq.arquivo.SaveAs(caminho);
+            }
+
             Membro_Transferencia trans = new Membro_Transferencia();
             trans.Nome = Request["nome"];
             trans.Rg = Request["rg"];
@@ -201,13 +228,24 @@ namespace MVC_gerenciadordeconteudo.Controllers
             trans.Nome_igreja_transferencia = Request["nome_igreja_transferencia"];
             trans.Estado_transferencia = Request["estado_transferencia"];
             trans.Nome_cidade_transferencia = Request["cidade_transferencia"];
-            trans.bd.montar_sql(trans.salvar(), null, null);
+            trans.bd.montar_sql(trans.salvar(), null, null, false);
+            PictureBox img = new PictureBox();
+            img.ImageLocation = caminho;
+            trans.bd.montar_sql("", img, null, true);
             Response.Redirect("/pessoas");
         }
 
         [HttpPost]
-        public void Criar_membro_aclamacao()
+        public void Criar_membro_aclamacao(remessa arq)
         {
+            string nomearquivo;
+            if (arq.arquivo.ContentLength > 0)
+            {
+                nomearquivo = Path.GetFileName(arq.arquivo.FileName);
+                caminho = Path.Combine(Server.MapPath("~/Imagens"), nomearquivo);
+                arq.arquivo.SaveAs(caminho);
+            }
+
             Membro_Aclamacao acla = new Membro_Aclamacao();
             acla.Nome = Request["nome"];
             acla.Rg = Request["rg"];
@@ -233,13 +271,24 @@ namespace MVC_gerenciadordeconteudo.Controllers
             acla.Img = Request["foto"];
             acla.Data_batismo = int.Parse(Request["batismo"]);
             acla.Denominacao = Request["denominacao"];
-            acla.bd.montar_sql(acla.salvar(), null, null);
+            acla.bd.montar_sql(acla.salvar(), null, null, false);
+            PictureBox img = new PictureBox();
+            img.ImageLocation = caminho;
+            acla.bd.montar_sql("", img, null, true);
             Response.Redirect("/pessoas");
         }
 
         [HttpPost]
-        public void Criar_membro_reconciliacao()
+        public void Criar_membro_reconciliacao(remessa arq)
         {
+            string nomearquivo;
+            if (arq.arquivo.ContentLength > 0)
+            {
+                nomearquivo = Path.GetFileName(arq.arquivo.FileName);
+                caminho = Path.Combine(Server.MapPath("~/Imagens"), nomearquivo);
+                arq.arquivo.SaveAs(caminho);
+            }
+
             Membro_Reconciliacao reco = new Membro_Reconciliacao();
             reco.Nome = Request["nome"];
             reco.Rg = Request["rg"];
@@ -265,13 +314,24 @@ namespace MVC_gerenciadordeconteudo.Controllers
             reco.Img = Request["foto"];
             reco.Data_batismo = int.Parse(Request["batismo"]);
             reco.Data_reconciliação = int.Parse(Request["reconciliacao"]);
-            reco.bd.montar_sql(reco.salvar(), null, null);
+            reco.bd.montar_sql(reco.salvar(), null, null, false);
+            PictureBox img = new PictureBox();
+            img.ImageLocation = caminho;
+            reco.bd.montar_sql("", img, null, true);
             Response.Redirect("/pessoas");
         }
 
         [HttpPost]
-        public void alterar()
+        public void alterar(remessa arq)
         {
+            string nomearquivo;
+            if (arq.arquivo.ContentLength > 0)
+            {
+                nomearquivo = Path.GetFileName(arq.arquivo.FileName);
+                caminho = Path.Combine(Server.MapPath("~/Imagens"), nomearquivo);
+                arq.arquivo.SaveAs(caminho);
+            }
+
             Pessoa pes = new Pessoa();
             pes.Nome = Request["nome"];
             pes.Rg = Request["rg"];
@@ -294,10 +354,11 @@ namespace MVC_gerenciadordeconteudo.Controllers
             pes.Fone = Request["telefone"];
             pes.Celular = Request["celular"];
             pes.Whatsapp = Request["whatsapp"];
-            pes.Img = Request["foto"];
-           
-            pes.bd.montar_sql(pes.alterar(), null, null);
-
+            pes.Img = Request["foto"];           
+            pes.bd.montar_sql(pes.alterar(), null, null, false);
+            PictureBox img = new PictureBox();
+            img.ImageLocation = caminho;
+            pes.bd.montar_sql("", img, null, true);
             Response.Redirect("/pessoas");
         }
 

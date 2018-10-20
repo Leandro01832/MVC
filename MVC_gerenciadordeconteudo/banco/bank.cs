@@ -22,10 +22,7 @@ namespace banco
             return data;
         }
 
-        public void salvar()
-        {
-            pes.bd.montar_sql(pes.salvar(), null, null);
-        }
+
 
         public DataTable livros()
         {

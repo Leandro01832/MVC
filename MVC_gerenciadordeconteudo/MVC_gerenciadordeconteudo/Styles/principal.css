@@ -3,9 +3,9 @@
 }
 
 .jumbotron{
-    background-image:url("../figura/familia.jpg");
-    background-repeat: no-repeat;
+    /*background-image:url("../figura/familia.jpg");
+    background-repeat: no-repeat;*/
     height: 600px;
-    background-size: cover;
+   /*background-attachment: fixed;*/
     width: 90%;
 }

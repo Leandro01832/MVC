@@ -1,11 +1,15 @@
-﻿@section css {
+﻿@model  MVC_gerenciadordeconteudo.Models.remessa
+
+@section css {
     <script type="text/javascript" src="~/Scripts/cep.js"></script>
-}
+}  
 
 <div class="jumbotron">
+    <h1>Cadastro de membro por aclamação</h1>
+
     <h1><a href="/pessoas" class="btn btn-default">voltar</a></h1>
     
-    <form action="/pessoas/criar_membro_aclamacao" method="post">
+    <form action="/pessoas/criar_membro_aclamacao" method="post" enctype="multipart/form-data">
         <div class="col-10">
             <label for="batismo">Ano de batismo:</label>
             <input class="form-control" maxlength="4" type="number" name="batismo" id="batismo" placeholder="digite o ano de batismo.">
@@ -142,7 +146,7 @@
        
         <div class="form-group">
             <label for="foto">Foto</label>
-            <input type="file" class="form-control-file" id="foto" aria-describedby="fileHelp">
+            <input type="file" class="form-control-file" id="arquivo" name="arquivo" required>
             <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
         </div>
        

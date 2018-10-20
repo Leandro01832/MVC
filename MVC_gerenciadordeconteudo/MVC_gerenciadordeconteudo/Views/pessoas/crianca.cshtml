@@ -1,4 +1,6 @@
-﻿@section css {
+﻿@model  MVC_gerenciadordeconteudo.Models.remessa
+
+@section css {
     <script type="text/javascript" src="~/Scripts/cep.js"></script>
 }
 
@@ -7,7 +9,7 @@
 
     <h1>Cadastro de Crianças</h1>
     
-    <form action="/pessoas/criar_crianca" method="post">
+    <form action="/pessoas/criar_crianca" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="pai">Nome do pai:</label>
             <input class="form-control" type="text" id="pai" name="pai" placeholder="Escreva o nome do pai.">
@@ -132,7 +134,7 @@
        
         <div class="form-group">
             <label for="foto">Foto</label>
-            <input type="file" class="form-control-file" id="foto" aria-describedby="fileHelp">
+            <input type="file" class="form-control-file" id="arquivo" name="arquivo" required>
             <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
         </div>
        

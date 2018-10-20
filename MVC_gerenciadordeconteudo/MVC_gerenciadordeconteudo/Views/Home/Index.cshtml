@@ -4,25 +4,51 @@
 
 @section css {
    <link rel="stylesheet" href="~/Styles/principal.css" />
-<link rel="stylesheet" href="~/Styles/menusom.css" />
+<link rel="stylesheet" href="~/Styles/menusom.css" /> 
+<link rel="stylesheet" href="~/Styles/carousel.css" /> 
+<script type="text/javascript" src="~/Scripts/carousel.js"></script> 
 <script type="text/javascript" src="~/Scripts/menu_efeito_som .js"></script>
 <script type="text/javascript" src="~/Scripts/jquery.js"></script>
 <script type="text/JavaScript" src="~/Scripts/som.js">  </script>
 
-}
-
-
-
+}  
 
 
     <div class="jumbotron">
 
-        <div>
+        <a href="/pessoas" class="btn-dark btn-group-sm btn-group-lg btn-group">Ir para pagina de cadastro</a>
+        <a href="/biblia" class="btn-danger btn-group-sm btn-group-lg btn-group">Vamos ler a biblia</a>         
+   
+        <div id="carouselsite" class="carousel" data-ride="carousel">
+              <div class="carousel-inner">
+                  <div class="carousel-item">
+                      <img class="img-fluid" src="~/Imagens/WIN_20180702_13_32_30_Pro.jpg" alt="imagem1"  />
+                      <div class="carousel-caption">
+                        
+                        
+                      </div>
+                  </div>
 
-            <a href="/pessoas" class="btn btn-default">Ir para pagina de cadastro</a>
-            <a href="/biblia" class="btn btn-default">Vamos ler a biblia</a>
+                  <div class="carousel-item">
+                      <img class="img-fluid" src="~/Imagens/WIN_20180702_13_32_30_Pro.jpg" alt="imagem2" />
+                      <div class="carousel-caption">
+                          
+                          
+                      </div>
+                  </div>
 
+                  <div class="carousel-item">
+                      <img class="img-fluid" src="~/Imagens/WIN_20180702_13_32_30_Pro.jpg" alt="imagem3"  />
+                      <div class="carousel-caption">
+                          
+                          
+                      </div>
+                  </div>
+
+              </div>
         </div>
-
-    </div>
+            
+       
+        
+    </div>  
 

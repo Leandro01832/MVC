@@ -1,5 +1,18 @@
 inicio();
 
+var links = document.getElementsByTagName("a");
+
+for (var i = 0; i <= links.item.length; i++) {
+    alert("entrou na função");
+    links[i].addEventListener("click", play_evento, false)
+}
+
+window.onload = function () {
+   
+}
+
+
+
 function inicio() {
     var corrente = 0;
     var audio = $("#audio");
@@ -33,6 +46,11 @@ function run(link, player) {
     player.load();
     player.play();
 }
+
+
+
+
+
 
 
 

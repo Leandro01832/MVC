@@ -16,14 +16,12 @@ background-color:  #cbcb45;
 background: #cbcb45;
 }
 
-p{
-    color: black;
-}
+
 
 #logo{
     position: absolute;
     left: 1300px;
-    bottom:10px;
+    top: 70px;
 }
 
  .container {
@@ -33,7 +31,7 @@ p{
  .top-bar{
      width: 100%;
      height: 30px;
-     background: #141414;
+     background: #666666;
      color: #888;
      line-height: 30px;
  }
@@ -73,33 +71,34 @@ p{
      background: #999;
  }
 
-.play ul{
+ ul{
      list-style: none;
      padding: 0px;
  }
 
- .play li :hover{
+ li :hover{
      background:#eee;
      border-bottom: solid 1px #f60;
  }
 
- .play li{
+  li{
      width: 20%;
-     padding: 5px;
+     padding: 25px;
      border-bottom: solid 1px #ccc;
  }
 
- .play .active a{
+  a{
      color: #f60;
      padding-left:1px;
+     padding: 25px;
      font-style: italic;
  }
 
- .conteudo{
-     bottom: 80px;
- }
 
- .navbar{    
+
+ .navbar{ 
+     
+     top: 0px;   
 	background-color: #98983f;
 	background-image: linear-gradient(to bottom, #b2cd52 30%, #98983f 70%);
 	background-attachment: fixed;

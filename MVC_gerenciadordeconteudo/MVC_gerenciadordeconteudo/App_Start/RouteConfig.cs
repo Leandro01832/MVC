@@ -24,7 +24,7 @@ namespace MVC_gerenciadordeconteudo
             routes.MapRoute(
               "sobre",
               "sobre",
-              new { controller = "Home", action = "about" }
+              new { controller = "Home", action = "About" }
          );
 
             routes.MapRoute(
