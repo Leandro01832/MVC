@@ -14,19 +14,21 @@
 }      
 
     <div class="jumbotron">
-         <ul >
-             @foreach (var c in livro)
-             {
-                <li id="livro">
-                    <a class="btn btn-default" href="/biblia/@c.Nome/capitulo?valor=@c.Nome">@c.Nome</a>
-                </li> 
 
-             } 
-                         
-         </ul>            
-        
+        <div id="livro" class="row">
 
-       
+            <ul >
+              
+                @foreach (var c in livro)
+                {
+                    <li>
+                        <a class="btn-dark btn-group-sm btn-group-lg btn-group" href="/biblia/@c.Nome/capitulo?valor=@c.Nome">@c.Nome</a>
+                    </li>
+
+                }
+            </ul>
+
+        </div>     
 
     </div>
 

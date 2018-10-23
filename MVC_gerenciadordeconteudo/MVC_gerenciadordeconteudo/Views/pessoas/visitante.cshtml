@@ -1,4 +1,4 @@
-﻿    @model  MVC_gerenciadordeconteudo.Models.remessa
+﻿    @model  MVC_gerenciadordeconteudo.Models.remessa    
 
 @section css {     
     <script type="text/javascript" src="~/Scripts/cep.js"></script>
@@ -10,152 +10,154 @@
     <h1><a href="/pessoas" class="btn btn-default">voltar</a></h1>
     
     <form action="/pessoas/criar_visitante" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="data_visita">Data da visita:</label>
-            <input class="form-control" type="datetime-local" id="data_visita" name="data_visita">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
 
-        <div class="form-group">
-            <label for="condicao_religiosa">Condição religiosa</label>
-            <select class="form-control" id="condicao_religiosa" name="condicao_religiosa">
-                <option>Católico</option>
-                <option>Evangelico</option>
-                <option>Espirita</option>
-                <option>Outros</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="nome">Nome:</label>
-            <input class="form-control" type="text" id="nome" name="nome" placeholder="Escreva seu nome.">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-
-        
-
-        <div class="form-group">
-            <label for="cpf">CPF:</label>
-            <input class="form-control" type="text" id="cpf" name="cpf" placeholder="Escreva seu CPF.">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-
-        <div class="form-group">
-            <label for="rg">RG:</label>
-            <input class="form-control" type="text" id="rg" name="rg" placeholder="Escreva seu RG.">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-
-        <div class="form-group">
-            <label for="data_nascimento">Data de nascimento:</label>
-            <input class="form-control" type="datetime-local" id="data_nascimento" name="data_nascimento">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-
-        <fieldset class="form-group">
-            <legend>Sexo:</legend>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="sexo" id="sexo_masculino"  checked>
-                    Sexo Masculino
-                </label>
+        <div class="row">
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="data_visita">Data da visita:</label>
+                <input class="form-control" type="datetime-local" id="data_visita" name="data_visita">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="sexo" id="sexo_feminino" >
-                    Sexo feminino
-                </label>
-            </div>             
-        </fieldset>
 
-        <div class="form-group">
-            <label for="estado_civil">Estado Civil</label>
-            <select class="form-control" id="estado_civil" name="estado_civil">
-                <option>Solteiro(a)</option>
-                <option>Casado(a)</option>
-                <option>Viuvo(a)</option>
-                <option>Separado(a)</option>                       
-            </select>
-        </div>
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="condicao_religiosa">Condição religiosa</label>
+                <select class="form-control" id="condicao_religiosa" name="condicao_religiosa">
+                    <option>Católico</option>
+                    <option>Evangelico</option>
+                    <option>Espirita</option>
+                    <option>Outros</option>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label for="pais">Pais:</label>
-            <input class="form-control" type="text" name="pais" id="pais" placeholder="Digite o Pais onde mora">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="nome">Nome:</label>
+                <input class="form-control" type="text" id="nome" name="nome" placeholder="Escreva seu nome.">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
 
-        <div class="form-group">
-            <label for="cep">CEP:</label>
-            <input name="cep" type="text" id="cep" onblur="pesquisacep(this.value);"/>
-           
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="cpf">CPF:</label>
+                <input class="form-control" type="text" id="cpf" name="cpf" placeholder="Escreva seu CPF.">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
 
-        <div class="form-group">
-            <label for="estado">Estado:</label>
-            <input class="form-control" type="text" name="estado" id="estado" placeholder="Estado">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="rg">RG:</label>
+                <input class="form-control" type="text" id="rg" name="rg" placeholder="Escreva seu RG.">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
 
-        <div class="form-group">
-            <label for="cidade">Cidade:</label>
-            <input class="form-control" type="text" name="cidade" id="cidade" placeholder="Escreva o nome da cidade onde mora.">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="data_nascimento">Data de nascimento:</label>
+                <input class="form-control" type="datetime-local" id="data_nascimento" name="data_nascimento">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
 
-        <div class="form-group">
-            <label for="bairro">Bairro:</label>
-            <input class="form-control" type="text" name="bairro" id="bairro" placeholder="Escreva o nome do bairro onde mora.">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
+            <fieldset class="form-group col-lg-6 col-md-6">
+               
+                <legend>Sexo:</legend>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" value="True" name="sexo" id="sexo_masculino" checked>
+                        Sexo Masculino
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" value="False" name="sexo" id="sexo_feminino">
+                        Sexo feminino
+                    </label>
+                </div>
+            </fieldset>
 
-        <div class="form-group">
-            <label for="rua">Rua:</label>
-            <input class="form-control" type="text" name="rua" id="rua" placeholder="Escreva o nome da rua onde mora.">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>               
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="estado_civil">Estado Civil</label>
+                <select class="form-control" id="estado_civil" name="estado_civil">
+                    <option>Solteiro(a)</option>
+                    <option>Casado(a)</option>
+                    <option>Viuvo(a)</option>
+                    <option>Separado(a)</option>
+                </select>
+            </div>
 
-        <div class="col-10">
-            <label for="numero">Numero:</label>  
-            <input class="form-control" type="number" name="numero" id="numero" placeholder="digite o numero da casa onde mora.">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="pais">Pais:</label>
+                <input class="form-control" type="text" name="pais" id="pais" placeholder="Digite o Pais onde mora">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
 
-        <div class="form-group">
-            <label for="complemento">Complemento:</label>
-            <input class="form-control" type="text" name="complemento" id="complemento" placeholder="Escreva o complemento onde mora.">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="cep">CEP:</label>
+                <input name="cep" type="text" id="cep" onblur="pesquisacep(this.value);" />
+
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="estado">Estado:</label>
+                <input class="form-control" type="text" name="estado" id="estado" placeholder="Estado">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="cidade">Cidade:</label>
+                <input class="form-control" type="text" name="cidade" id="cidade" placeholder="Escreva o nome da cidade onde mora.">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="bairro">Bairro:</label>
+                <input class="form-control" type="text" name="bairro" id="bairro" placeholder="Escreva o nome do bairro onde mora.">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="rua">Rua:</label>
+                <input class="form-control" type="text" name="rua" id="rua" placeholder="Escreva o nome da rua onde mora.">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="numero">Numero:</label>
+                <input class="form-control" type="number" name="numero" id="numero" placeholder="digite o numero da casa onde mora.">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="complemento">Complemento:</label>
+                <input class="form-control" type="text" name="complemento" id="complemento" placeholder="Escreva o complemento onde mora.">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Digite seu email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="telefone">Telefone:</label>
+                <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Digite seu telefone">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="celular">Celular:</label>
+                <input type="text" class="form-control" name="celular" id="celular" placeholder="Digite seu celular">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="Whatsapp">Whatsapp:</label>
+                <input type="text" class="form-control" name="whatsapp" id="whatsapp" placeholder="Digite seu whatsapp">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group col-lg-6 col-md-6">
+                <label for="foto">Foto</label>
+                <input type="file" class="form-control-file" id="arquivo" name="arquivo" required>
+                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+            </div>
         </div> 
-        
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Digite seu email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-
-        <div class="form-group">
-            <label for="telefone">Telefone:</label>
-            <input type="text" class="form-control" name="telefone"  id="telefone" placeholder="Digite seu telefone">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-
-        <div class="form-group">
-            <label for="celular">Celular:</label>
-            <input type="text" class="form-control" name="celular" id="celular" placeholder="Digite seu celular">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-
-        <div class="form-group">
-            <label for="Whatsapp">Whatsapp:</label>
-            <input type="text" class="form-control" name="whatsapp" id="whatsapp" placeholder="Digite seu whatsapp">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        
-        <div class="form-group">
-            <label for="foto">Foto</label>
-            <input type="file" class="form-control-file" id="arquivo" name="arquivo" required>
-            <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-        </div>  
 
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>

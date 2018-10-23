@@ -7,12 +7,14 @@ using System.IO;
 using System.Web.Mvc;
 using System.Windows.Forms;
 
+
 namespace MVC_gerenciadordeconteudo.Controllers
 {
     public class pessoasController : Controller
     {
         
         string caminho;
+        
 
         public ActionResult Index()
         {
@@ -76,8 +78,9 @@ namespace MVC_gerenciadordeconteudo.Controllers
             visi.Nome = Request["nome"];
             visi.Rg = Request["rg"];
             visi.Cpf = Request["cpf"];
-            visi.Sexo_feminino = Convert.ToBoolean(Request["sexo_feminino"]);
-            visi.Sexo_masculino = Convert.ToBoolean(Request["sexo_masculino"]);
+            var sexo_m = Convert.ToBoolean(Request["sexo"]);            
+            visi.Sexo_feminino = !sexo_m;
+            visi.Sexo_masculino = sexo_m;
             DateTime data = Convert.ToDateTime(Request["data_nascimento"]);
             string d = data.ToString("yyyy-MM-dd");
             visi.Data_nascimento = Convert.ToDateTime(d);
@@ -120,8 +123,9 @@ namespace MVC_gerenciadordeconteudo.Controllers
             cri.Rg = Request["rg"];
             Random random = new Random();
             cri.Cpf = random.Next(10000, 9999999).ToString();
-            cri.Sexo_feminino = Convert.ToBoolean(Request["sexo_feminino"]);
-            cri.Sexo_masculino = Convert.ToBoolean(Request["sexo_masculino"]);
+            var sexo_m = Convert.ToBoolean(Request["sexo"]);
+            cri.Sexo_feminino = !sexo_m;
+            cri.Sexo_masculino = sexo_m;
             DateTime data = Convert.ToDateTime(Request["data_nascimento"]);
             string d = data.ToString("yyyy-MM-dd");
             cri.Data_nascimento = Convert.ToDateTime(d);
@@ -163,8 +167,9 @@ namespace MVC_gerenciadordeconteudo.Controllers
             mem.Nome = Request["nome"];
             mem.Rg = Request["rg"];
             mem.Cpf = Request["cpf"];
-            mem.Sexo_feminino = Convert.ToBoolean(Request["sexo_feminino"]);
-            mem.Sexo_masculino = Convert.ToBoolean(Request["sexo_masculino"]);
+            var sexo_m = Convert.ToBoolean(Request["sexo"]);
+            mem.Sexo_feminino = !sexo_m;
+            mem.Sexo_masculino = sexo_m;
             DateTime data = Convert.ToDateTime(Request["data_nascimento"]);
             string d = data.ToString("yyyy-MM-dd");
             mem.Data_nascimento = Convert.ToDateTime(d);
@@ -205,8 +210,9 @@ namespace MVC_gerenciadordeconteudo.Controllers
             trans.Nome = Request["nome"];
             trans.Rg = Request["rg"];
             trans.Cpf = Request["cpf"];
-            trans.Sexo_feminino = Convert.ToBoolean(Request["sexo_feminino"]);
-            trans.Sexo_masculino = Convert.ToBoolean(Request["sexo_masculino"]);
+            var sexo_m = Convert.ToBoolean(Request["sexo"]);
+            trans.Sexo_feminino = !sexo_m;
+            trans.Sexo_masculino = sexo_m;
             DateTime data = Convert.ToDateTime(Request["data_nascimento"]);
             string d = data.ToString("yyyy-MM-dd");
             trans.Data_nascimento = Convert.ToDateTime(d);
@@ -250,8 +256,9 @@ namespace MVC_gerenciadordeconteudo.Controllers
             acla.Nome = Request["nome"];
             acla.Rg = Request["rg"];
             acla.Cpf = Request["cpf"];
-            acla.Sexo_feminino = Convert.ToBoolean(Request["sexo_feminino"]);
-            acla.Sexo_masculino = Convert.ToBoolean(Request["sexo_masculino"]);
+            var sexo_m = Convert.ToBoolean(Request["sexo"]);
+            acla.Sexo_feminino = !sexo_m;
+            acla.Sexo_masculino = sexo_m;
             DateTime data = Convert.ToDateTime(Request["data_nascimento"]);
             string d = data.ToString("yyyy-MM-dd");
             acla.Data_nascimento = Convert.ToDateTime(d);
@@ -293,8 +300,9 @@ namespace MVC_gerenciadordeconteudo.Controllers
             reco.Nome = Request["nome"];
             reco.Rg = Request["rg"];
             reco.Cpf = Request["cpf"];
-            reco.Sexo_feminino = Convert.ToBoolean(Request["sexo_feminino"]);
-            reco.Sexo_masculino = Convert.ToBoolean(Request["sexo_masculino"]);
+            var sexo_m = Convert.ToBoolean(Request["sexo"]);
+            reco.Sexo_feminino = !sexo_m;
+            reco.Sexo_masculino = sexo_m;
             DateTime data = Convert.ToDateTime(Request["data_nascimento"]);
             string d = data.ToString("yyyy-MM-dd");
             reco.Data_nascimento = Convert.ToDateTime(d);
@@ -336,8 +344,9 @@ namespace MVC_gerenciadordeconteudo.Controllers
             pes.Nome = Request["nome"];
             pes.Rg = Request["rg"];
             pes.Cpf = Request["cpf"];
-            pes.Sexo_feminino = Convert.ToBoolean(Request["sexo_feminino"]);
-            pes.Sexo_masculino = Convert.ToBoolean(Request["sexo_masculino"]);
+            var sexo_m = Convert.ToBoolean(Request["sexo"]);
+            pes.Sexo_feminino = !sexo_m;
+            pes.Sexo_masculino = sexo_m;
             DateTime data = Convert.ToDateTime(Request["data_nascimento"]);
             string d = data.ToString("yyyy-MM-dd");
             pes.Data_nascimento = Convert.ToDateTime(d);

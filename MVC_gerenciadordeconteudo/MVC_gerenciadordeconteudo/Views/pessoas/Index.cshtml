@@ -38,665 +38,990 @@
         
     <h3>
         Pessoas da primeira Igreja Batista de Cataguases
-    </h3>
-    <div id="pagina_cadastro">         
+    </h3>     
 
-        <div class="caixa">
-            @{
+    <div class="accordion" id="accordionExample">
+
+        <div class="card">
+            @{ 
                 negocio.gerenciamento negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("A");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'A'</div>
-            <div class="conteudo show">
-                <table class="table-responsive">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                            
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Nomes que começam com a letra 'A'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
                 negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("B");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'B'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Nomes que começam com a letra 'B'
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
-            @{ 
+        <div class="card">
+            @{
                 negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("C");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'C'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Nomes que começam com a letra 'C'
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("D");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'D'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h4">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c4" aria-expanded="false" aria-controls="c4">
+                        Nomes que começam com a letra 'D'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c4" class="collapse" aria-labelledby="h4" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("E");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'E'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h5">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c5" aria-expanded="false" aria-controls="c5">
+                        Nomes que começam com a letra 'E'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c5" class="collapse" aria-labelledby="h5" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("F");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'F'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h6">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c6" aria-expanded="false" aria-controls="c6">
+                        Nomes que começam com a letra 'F'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c6" class="collapse" aria-labelledby="h6" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("G");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'G'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h7">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c7" aria-expanded="false" aria-controls="c7">
+                        Nomes que começam com a letra 'G'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c7" class="collapse" aria-labelledby="h7" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("H");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'H'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h8">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c8" aria-expanded="false" aria-controls="c8">
+                        Nomes que começam com a letra 'H'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c8" class="collapse" aria-labelledby="h8" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("I");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'I'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h9">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c9" aria-expanded="false" aria-controls="c9">
+                        Nomes que começam com a letra 'I'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c9" class="collapse" aria-labelledby="h9" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("J");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'J'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h10">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c10" aria-expanded="false" aria-controls="c10">
+                        Nomes que começam com a letra 'J'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c10" class="collapse" aria-labelledby="h10" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("K");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'K'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h11">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c11" aria-expanded="false" aria-controls="c11">
+                        Nomes que começam com a letra 'K'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c11" class="collapse" aria-labelledby="h11" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("L");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'L'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h12">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c12" aria-expanded="false" aria-controls="c12">
+                        Nomes que começam com a letra 'L'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c12" class="collapse" aria-labelledby="h12" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("M");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'M'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h13">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c13" aria-expanded="false" aria-controls="c13">
+                        Nomes que começam com a letra 'M'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c13" class="collapse" aria-labelledby="h13" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("N");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'N'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h14">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c14" aria-expanded="false" aria-controls="c14">
+                        Nomes que começam com a letra 'N'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c14" class="collapse" aria-labelledby="h14" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("O");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'O'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h15">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c15" aria-expanded="false" aria-controls="c15">
+                        Nomes que começam com a letra 'O'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c15" class="collapse" aria-labelledby="h15" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("P");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'P'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h16">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c16" aria-expanded="false" aria-controls="c16">
+                        Nomes que começam com a letra 'P'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c16" class="collapse" aria-labelledby="h16" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("Q");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'Q'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h17">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c17" aria-expanded="false" aria-controls="c17">
+                        Nomes que começam com a letra 'Q'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c17" class="collapse" aria-labelledby="h17" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("R");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'R'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h18">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c18" aria-expanded="false" aria-controls="c18">
+                        Nomes que começam com a letra 'R'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c18" class="collapse" aria-labelledby="h18" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("S");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'S'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h19">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c19" aria-expanded="false" aria-controls="c19">
+                        Nomes que começam com a letra 'S'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c19" class="collapse" aria-labelledby="h19" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("T");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'T'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h20">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c20" aria-expanded="false" aria-controls="c20">
+                        Nomes que começam com a letra 'T'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c20" class="collapse" aria-labelledby="h20" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("U");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'U'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h21">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c21" aria-expanded="false" aria-controls="c21">
+                        Nomes que começam com a letra 'U'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c21" class="collapse" aria-labelledby="h21" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("V");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'V'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h22">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c22" aria-expanded="false" aria-controls="c22">
+                        Nomes que começam com a letra 'V'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c22" class="collapse" aria-labelledby="h22" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("X");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'X'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h23">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c23" aria-expanded="false" aria-controls="c23">
+                        Nomes que começam com a letra 'X'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c23" class="collapse" aria-labelledby="h23" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("W");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'W'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h24">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c24" aria-expanded="false" aria-controls="c24">
+                        Nomes que começam com a letra 'W'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c24" class="collapse" aria-labelledby="h24" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <div class="caixa">
+        <div class="card">
             @{
-                negocio = new negocio.gerenciamento();
                 ViewBag.gente = negocio.pessoas("Z");
                 pessoas = ViewBag.gente;
             }
-            <div class="titulo">Nomes que começam com a letra 'Z'</div>
-            <div class="conteudo hide">
-                <table class="table-bordered">
-                    <tr>
-                        <td>Nome</td>
-                        <td>ID</td>
-                        <td></td>
-                    </tr>
-                    @foreach (var p in pessoas)
-                    {
-                        <tr>
-                            <td>@p.Nome</td>
-                            <td>@p.Id_pessoa</td>
-                            <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
-                        </tr>
-                    }
-                </table>
+            <div class="card-header" id="h25">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#c25" aria-expanded="false" aria-controls="c25">
+                        Nomes que começam com a letra 'Z'
+                    </button>
+                </h5>
+            </div>
+
+            <div id="c25" class="collapse" aria-labelledby="h25" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in pessoas)
+                            {
+                                <tr>
+                                    <td>@p.Nome</td>
+                                    <td>@p.Id_pessoa</td>
+                                    <td><a href="/pessoas/@p.Id_pessoa/editar">alterar dados</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-    </div>
-  
-  
+    </div> 
 
-
- 
 </div>
 

@@ -16,12 +16,12 @@
 
 }      
 
-    <div class="jumbotron">
+    <div id="livro" class="jumbotron">
          <ul >
              @foreach (var c in livro)
              {
                 <li id="livro">
-                    <a class="btn btn-default" href="/biblia/@c.Nome/capitulo?valor=@c.Nome">@c.Nome</a>
+                    <a class="btn btn-primary" href="/biblia/@c.Nome/capitulo?valor=@c.Nome">@c.Nome</a>
                 </li>
                    
              }
@@ -29,7 +29,7 @@
                  @foreach (var ca in capitulos)
                  {
                   <li id="capitulo">
-                      <a class="btn btn-default" href="/biblia/@Request.QueryString["livro"]/@ca.Capitulo/versiculo?livro=@Request.QueryString["livro"]&capitulo=@ca.Capitulo">@ca.Capitulo</a>
+                      <a class="btn btn-secondary" href="/biblia/@Request.QueryString["livro"]/@ca.Capitulo/versiculo?livro=@Request.QueryString["livro"]&capitulo=@ca.Capitulo">@ca.Capitulo</a>
                   </li>                    
                  }                   
                          
