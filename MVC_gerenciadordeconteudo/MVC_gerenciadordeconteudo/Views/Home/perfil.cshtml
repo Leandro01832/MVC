@@ -1,24 +1,31 @@
-﻿    @model  MVC_gerenciadordeconteudo.Models.remessa
+﻿@model  MVC_gerenciadordeconteudo.Models.remessa
 
 @{
     ViewBag.Title = "Cadastro";
     business.classes.Pessoa pessoa = ViewBag.pessoa;
 }
 
-
+@{
+    ViewBag.sessao = Session["start"];
+    var valor = ViewBag.sessao;
+    if (valor != 1)
+    {
+        Response.Redirect("/Home");
+    }
+}
 
 <div class="jumbotron">
     <h1><a href="/Home/sair" class="btn btn-dark">Sair da conta</a></h1>
-    
+
     <form action="/pessoas/@pessoa.Id_pessoa/alterar" method="post" enctype="multipart/form-data">
-       
+
         <div class="form-group">
             <label for="nome">Nome:</label>
             <input class="form-control" type="text" value="@pessoa.Nome" id="nome" name="nome" placeholder="Escreva seu nome.">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
 
-        
+
 
         <div class="form-group">
             <label for="cpf">CPF:</label>
@@ -42,16 +49,16 @@
             <legend>Sexo:</legend>
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="sexo" id="sexo_masculino"  checked>
+                    <input type="radio" class="form-check-input" value="True" name="sexo" id="sexo_masculino" checked>
                     Sexo Masculino
                 </label>
             </div>
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="sexo" id="sexo_feminino" >
+                    <input type="radio" class="form-check-input" value="False" name="sexo" id="sexo_feminino">
                     Sexo feminino
                 </label>
-            </div>             
+            </div>
         </fieldset>
 
         <div class="form-group">
@@ -60,7 +67,7 @@
                 <option>Solteiro(a)</option>
                 <option>Casado(a)</option>
                 <option>Viuvo(a)</option>
-                <option>Separado(a)</option>                       
+                <option>Separado(a)</option>
             </select>
         </div>
 
@@ -98,10 +105,10 @@
             <label for="rua">Rua:</label>
             <input class="form-control" type="text" value="@pessoa.Rua" name="rua" id="rua" placeholder="Escreva o nome da rua onde mora.">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>               
+        </div>
 
         <div class="col-10">
-            <label for="numero">Numero:</label>  
+            <label for="numero">Numero:</label>
             <input class="form-control" type="number" value="@pessoa.Numero_casa" name="numero" id="numero" placeholder="digite o numero da casa onde mora.">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
@@ -110,8 +117,8 @@
             <label for="complemento">Complemento:</label>
             <input class="form-control" type="text" value="@pessoa.Complemento" name="complemento" id="complemento" placeholder="Escreva o complemento onde mora.">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div> 
-        
+        </div>
+
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" class="form-control" value="@pessoa.Email" name="email" id="email" aria-describedby="emailHelp" placeholder="Digite seu email">
@@ -120,7 +127,7 @@
 
         <div class="form-group">
             <label for="telefone">Telefone:</label>
-            <input type="text" class="form-control" value="@pessoa.Fone" name="telefone"  id="telefone" placeholder="Digite seu telefone">
+            <input type="text" class="form-control" value="@pessoa.Fone" name="telefone" id="telefone" placeholder="Digite seu telefone">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
 
@@ -135,18 +142,18 @@
             <input type="text" class="form-control" value="@pessoa.Whatsapp" name="whatsapp" id="whatsapp" placeholder="Digite seu whatsapp">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
-        
+
         <div class="form-group">
             <label for="foto">Foto</label>
             <input type="file" class="form-control-file" id="arquivo" name="arquivo" required>
             <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-        </div>  
+        </div>
 
         <button type="submit" class="btn btn-primary">Alterar</button>
     </form>
-  
 
 
- 
+
+
 </div>
 

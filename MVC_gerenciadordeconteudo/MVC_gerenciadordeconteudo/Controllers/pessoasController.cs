@@ -3,18 +3,18 @@ using database.banco;
 using MVC_gerenciadordeconteudo.Models;
 using negocio;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Web.Mvc;
 using System.Windows.Forms;
-
+using System.Text;
+using System.Security.Cryptography;
 
 namespace MVC_gerenciadordeconteudo.Controllers
 {
     public class pessoasController : Controller
-    {
-        
-        string caminho;
-        
+    {        
+        string caminho;        
 
         public ActionResult Index()
         {
@@ -65,7 +65,9 @@ namespace MVC_gerenciadordeconteudo.Controllers
 
         [HttpPost]
         public void Criar_visitante(remessa arq)
-        {           
+        {
+            
+            
             string nomearquivo;
             if(arq.arquivo.ContentLength > 0)
             {
@@ -75,6 +77,7 @@ namespace MVC_gerenciadordeconteudo.Controllers
             }           
                        
             Visitante visi = new Visitante();            
+            
             visi.Nome = Request["nome"];
             visi.Rg = Request["rg"];
             visi.Cpf = Request["cpf"];
@@ -104,6 +107,9 @@ namespace MVC_gerenciadordeconteudo.Controllers
             PictureBox img = new PictureBox();
             img.ImageLocation = caminho;
             visi.bd.montar_sql("", img, null, true);
+            senha s = new senha();
+            s.Hash = Request["senha"];
+            s.salvar();
             Response.Redirect("/pessoas");
         }
 
@@ -149,6 +155,9 @@ namespace MVC_gerenciadordeconteudo.Controllers
             PictureBox img = new PictureBox();
             img.ImageLocation = caminho;
             cri.bd.montar_sql("", img, null, true);
+            senha s = new senha();
+            s.Hash = Request["senha"];
+            s.salvar();
             Response.Redirect("/pessoas");
         }
 
@@ -192,6 +201,9 @@ namespace MVC_gerenciadordeconteudo.Controllers
             PictureBox img = new PictureBox();
             img.ImageLocation = caminho;
             mem.bd.montar_sql("", img, null, true);
+            senha s = new senha();
+            s.Hash = Request["senha"];
+            s.salvar();
             Response.Redirect("/pessoas");
         }
 
@@ -238,6 +250,9 @@ namespace MVC_gerenciadordeconteudo.Controllers
             PictureBox img = new PictureBox();
             img.ImageLocation = caminho;
             trans.bd.montar_sql("", img, null, true);
+            senha s = new senha();
+            s.Hash = Request["senha"];
+            s.salvar();
             Response.Redirect("/pessoas");
         }
 
@@ -282,6 +297,9 @@ namespace MVC_gerenciadordeconteudo.Controllers
             PictureBox img = new PictureBox();
             img.ImageLocation = caminho;
             acla.bd.montar_sql("", img, null, true);
+            senha s = new senha();
+            s.Hash = Request["senha"];
+            s.salvar();
             Response.Redirect("/pessoas");
         }
 
@@ -326,6 +344,9 @@ namespace MVC_gerenciadordeconteudo.Controllers
             PictureBox img = new PictureBox();
             img.ImageLocation = caminho;
             reco.bd.montar_sql("", img, null, true);
+            senha s = new senha();
+            s.Hash = Request["senha"];
+            s.salvar();
             Response.Redirect("/pessoas");
         }
 
@@ -367,7 +388,7 @@ namespace MVC_gerenciadordeconteudo.Controllers
             pes.bd.montar_sql(pes.alterar(), null, null, false);
             PictureBox img = new PictureBox();
             img.ImageLocation = caminho;
-            pes.bd.montar_sql("", img, null, true);
+            pes.bd.montar_sql("", img, null, true);            
             Response.Redirect("/pessoas");
         }
 

@@ -331,9 +331,13 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="figura\chuva_coracao.gif" />
+    <Content Include="figura\familia-2.jpg" />
     <Content Include="figura\familia.jpg" />
     <Content Include="figura\logo.png" />
+    <Content Include="figura\louvor.jpg" />
+    <Content Include="figura\nuvem.jpg" />
     <Content Include="figura\recados-coracao-gif-196_thumb[2].gif" />
+    <Content Include="figura\texto-biblico-familia.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -393,6 +397,8 @@
     <Content Include="sons\NANI AZEVEDO - NÃO TEMAS.mp3" />
     <Content Include="sons\Nani Azevedo Atrai Meu Coracao.mp3" />
     <Content Include="sons\Quero descer - Raquel Mello e Nani Azevedo.mp3" />
+    <Content Include="Styles\layout_louvor.css" />
+    <Content Include="Styles\layout_nuvem.css" />
     <Content Include="Styles\layout_amor.css" />
     <Content Include="Styles\sobre.css" />
     <Content Include="Styles\carousel.css" />
@@ -449,6 +455,9 @@
     <Content Include="Views\biblia\capitulo.cshtml" />
     <Content Include="Views\biblia\versiculo.cshtml" />
     <Content Include="Views\Shared\_Amor.cshtml" />
+    <Content Include="Views\Shared\_Nuvem.cshtml" />
+    <Content Include="Views\Shared\_Louvor.cshtml" />
+    <Content Include="Views\Home\perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

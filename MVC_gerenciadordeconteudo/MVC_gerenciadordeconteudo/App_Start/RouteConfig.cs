@@ -28,6 +28,24 @@ namespace MVC_gerenciadordeconteudo
          );
 
             routes.MapRoute(
+            "logar",
+            "logar",
+            new { controller = "Home", action = "logar" }
+       );
+
+            routes.MapRoute(
+         "sair",
+         "sair",
+         new { controller = "Home", action = "sair" }
+    );
+
+            routes.MapRoute(
+          "perfil",
+          "Home/perfil/{id}",
+          new { controller = "Home", action = "perfil", id = 0}
+     );
+
+            routes.MapRoute(
            "biblia",
            "biblia",
            new { controller = "biblia", action = "Index"}

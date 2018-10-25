@@ -1,6 +1,6 @@
-﻿@{
-    
-    Layout = "~/Views/Shared/_Amor.cshtml";
+﻿@{ 
+    banco.bank b = new banco.bank();
+    string pagina = b.layout();
 
-   
+    Layout = pagina;
 }

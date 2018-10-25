@@ -17,8 +17,7 @@ namespace negocio
     {
         private int id_pessoa;
         private string nome;
-        private byte[] img;
-        
+        private byte[] img;       
 
         public string Nome
         {
@@ -60,7 +59,7 @@ namespace negocio
         }
 
         public List<business.classes.Pessoa> pessoas(string letra)
-        {
+        {            
             bank b = new bank();
             DataTable datatable = b.listar(letra);
             List<business.classes.Pessoa > lista = new List<business.classes.Pessoa>();
