@@ -1,0 +1,32 @@
+﻿@model business.classes.Ministerio
+
+@{
+    ViewBag.Title = "participar";
+}
+
+<h2>participar</h2>
+
+@using (Html.BeginForm("participar", "Ministerio", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Ministerio</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ministerioid)
+        @Html.HiddenFor(model => model.Pessoas)
+        @Html.HiddenFor(model => model.Nome)
+        @Html.HiddenFor(model => model.Proposito)
+        @Html.HiddenFor(model => model.lider_ministerio)
+        @Html.HiddenFor(model => model.Maximo_pessoa)
+        
+        <label>Deseja participar do ministerio?</label>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Participar do ministério" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

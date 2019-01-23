@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    List<projeto.Models.livro> livro = ViewBag.livro;
+    List<projeto.Models.versiculo> capitulos = ViewBag.capitulo;
+    List<projeto.Models.versiculo> versiculo = ViewBag.versiculo;
+}
+
+@section css {
+    <link rel="stylesheet" href="~/Styles/biblia.css" />
+    <script type="text/javascript" src="~/Scripts/efeito_som.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script type="text/JavaScript" src="~/Scripts/som.js">  </script>
+
+}
+
+<div id="livro" class="jumbotron">
+    <ul>
+        @foreach (var c in livro)
+        {
+            <li id="livro">
+                <a class="btn btn-danger" href="/biblia/@c.Nome/capitulo?valor=@c.Nome">@c.Nome</a>
+            </li>
+
+        }
+    </ul>
+
+    <p> Capitulos do livro @Request.QueryString["valor"] </p>
+
+
+    <ul id="capitulo">
+        @foreach (var ca in capitulos)
+            {
+            <li id="capitulo">
+                <a class="btn btn-success" href="/biblia/@Request.QueryString["valor"]/@ca.Capitulo/versiculo?livro=@Request.QueryString["valor"]&capitulo=@ca.Capitulo">@ca.Capitulo</a>
+            </li>
+        }
+    </ul>
+
+
+</div>
+

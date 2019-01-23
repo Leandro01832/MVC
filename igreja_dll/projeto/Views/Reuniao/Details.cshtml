@@ -1,0 +1,50 @@
+﻿@model business.classes.Reuniao
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reuniao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_reuniao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_reuniao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Horario_inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Horario_inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Horario_fim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Horario_fim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Local_reuniao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Local_reuniao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cronologiaid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

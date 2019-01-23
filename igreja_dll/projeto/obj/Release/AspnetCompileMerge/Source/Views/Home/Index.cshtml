@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Home";
+}   
+
+<p class="text-center"><h1>HOME</h1></p>
+
+ <a href="/Home/Perfil">Meu Perfil</a>
+
+
+<div id="carouselsite" class="carousel" data-ride="carousel">
+    
+    <div class="carousel-inner">
+        <div class="carousel-item">
+            <img class="img-responsive" src="~/figura/familia.jpg" alt="imagem1" />
+            <div class="carousel-caption"> 
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img class="img-responsive" src="~/figura/familia-2.jpg" alt="imagem2" />
+            <div class="carousel-caption"> 
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img class="img-responsive" src="~/figura/texto-biblico-familia.jpg" alt="imagem3" />
+            <div class="carousel-caption">
+            </div>
+        </div>   
+
+    </div>
+</div> 
+
+@section scripts{
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+
+	$('.carousel-item:eq(0)').addClass("ativo").show();
+
+	var texto = $(".ativo").attr("alt");
+	$('.carousel-item').prepend("<p>" + texto + "</p>");
+
+	setInterval(slide, 8000);
+
+	function slide(){
+	    if ($('.ativo').next().size()) {
+	        $('.ativo').fadeOut().removeClass("ativo").next().addClass("ativo");
+	        $('.ativo').delay(500).fadeIn();
+		}else
+		{
+		    $('.ativo').fadeOut().removeClass("ativo");
+		    $('.carousel-item:eq(0)').delay(500).fadeIn().addClass("ativo");
+		}
+
+		var texto = $(".ativo img").attr("alt");
+
+		$('.carousel-item p').hide().html(texto).delay(1500).fadeIn();
+
+	}
+
+
+
+});
+
+    </script>
+
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\obj\Debug\business.csprojResolveAssemblyReference.cache
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\obj\Debug\RdlCompile.cache
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\obj\Debug\RdlCompile.compiled
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\bin\Debug\business.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\bin\Debug\business.pdb
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\bin\Debug\database.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\bin\Debug\database.pdb
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\obj\Debug\business.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\obj\Debug\business.pdb
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\bin\Debug\MySql.Data.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\bin\Debug\business.dll.config
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\bin\Debug\EntityFramework.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\bin\Debug\EntityFramework.xml
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\business\bin\Debug\EntityFramework.SqlServer.xml

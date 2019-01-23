@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CBE8B7D6-52AA-4804-81EB-1EEE6C986D96}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>repositorioEF</RootNamespace>
+    <AssemblyName>repositorioEF</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DB.cs" />
+    <Compile Include="Migrations\201812302101142_igreja.cs" />
+    <Compile Include="Migrations\201812302101142_igreja.Designer.cs">
+      <DependentUpon>201812302101142_igreja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901031513161_reuniao.cs" />
+    <Compile Include="Migrations\201901031513161_reuniao.Designer.cs">
+      <DependentUpon>201901031513161_reuniao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901031528569_reuniao2.cs" />
+    <Compile Include="Migrations\201901031528569_reuniao2.Designer.cs">
+      <DependentUpon>201901031528569_reuniao2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901031556231_chamada.cs" />
+    <Compile Include="Migrations\201901031556231_chamada.Designer.cs">
+      <DependentUpon>201901031556231_chamada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901120013235_reuniao3.cs" />
+    <Compile Include="Migrations\201901120013235_reuniao3.Designer.cs">
+      <DependentUpon>201901120013235_reuniao3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901141319594_historico.cs" />
+    <Compile Include="Migrations\201901141319594_historico.Designer.cs">
+      <DependentUpon>201901141319594_historico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901141805470_historico2.cs" />
+    <Compile Include="Migrations\201901141805470_historico2.Designer.cs">
+      <DependentUpon>201901141805470_historico2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\business\business.csproj">
+      <Project>{695ABC28-63EF-4C54-AC28-A27CA2496482}</Project>
+      <Name>business</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201812302101142_igreja.resx">
+      <DependentUpon>201812302101142_igreja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901031513161_reuniao.resx">
+      <DependentUpon>201901031513161_reuniao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901031528569_reuniao2.resx">
+      <DependentUpon>201901031528569_reuniao2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901031556231_chamada.resx">
+      <DependentUpon>201901031556231_chamada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901120013235_reuniao3.resx">
+      <DependentUpon>201901120013235_reuniao3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901141319594_historico.resx">
+      <DependentUpon>201901141319594_historico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901141805470_historico2.resx">
+      <DependentUpon>201901141805470_historico2.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

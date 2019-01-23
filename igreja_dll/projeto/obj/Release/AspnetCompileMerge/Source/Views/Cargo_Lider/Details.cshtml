@@ -1,0 +1,234 @@
+﻿@model business.classes.Cargo_Lider
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lider</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Celula.Cel_nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Celula.Cel_nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Data_nascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Data_nascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Rg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Rg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Cpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Cpf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Estado_civil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Estado_civil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Sexo_masculino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Sexo_masculino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Sexo_feminino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Sexo_feminino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Falescimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Falescimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Falta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Falta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Img)
+        </dd>          
+
+    </dl>
+</div>
+
+<div>
+    <h4>Endereço</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Endereco.Pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Endereco.Pais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Endereco.Cep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Endereco.Cep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Endereco.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Endereco.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Endereco.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Endereco.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Endereco.Rua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Endereco.Rua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Endereco.Numero_casa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Endereco.Numero_casa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Endereco.Complemento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Endereco.Complemento)
+        </dd>
+
+    </dl>
+</div>
+
+<div>
+    <h4>Telefone</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Telefone.Fone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Telefone.Fone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Telefone.Celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Telefone.Celular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Telefone.Whatsapp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Telefone.Whatsapp)
+        </dd>
+
+    </dl>
+</div>
+
+<div>
+    <h4>Ministérios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => Model.Pessoa.Ministerios)
+        </dt>
+
+        <dd>
+            @{
+                for (int i = 0; i < Model.Pessoa.Ministerios.Count; i++)
+                {
+                    var valor = Model.Pessoa.Ministerios[i].Nome;
+                    <a href="/Ministerio/Details/@Model.Pessoa.Ministerios[i].ministerioid">@valor</a>
+                }
+            }
+        </dd>
+
+    </dl>
+</div>
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Liderid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

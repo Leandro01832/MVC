@@ -1,0 +1,47 @@
+﻿body {
+   background-color: #98983f;
+	background-image: linear-gradient(to bottom, #b2cd52 30%, #98983f 70%);
+	background-attachment: fixed;
+    
+}
+
+.navbar-toggle{
+    /*background-color: black;*/
+    width: 120px;
+}
+
+.body-content {
+    padding-top: 50px;
+}
+
+.navbar-inverse
+ {
+     background-color: rgba(2, 75, 19, 0.2); border-color: #000000;
+
+}
+
+
+
+.container{
+background-color:  #cbcb45;
+
+}
+
+ 
+ 
+
+
+
+
+
+ /*.navbar{ 
+     
+     top: 0px;   
+	background-color: #98983f;
+	background-image: linear-gradient(to bottom, #b2cd52 30%, #98983f 70%);
+	background-attachment: fixed;
+ }*/
+
+.navbar-right li{
+    padding: 10px;
+}

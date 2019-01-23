@@ -1,0 +1,11 @@
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\database\bin\Release\database.dll.config
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\database\bin\Release\database.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\database\bin\Release\database.pdb
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\database\bin\Release\EntityFramework.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\database\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\database\bin\Release\MySql.Data.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\database\bin\Release\EntityFramework.xml
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\database\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\database\obj\Release\database.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\database\obj\Release\database.pdb
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\database\obj\Release\database.csprojResolveAssemblyReference.cache

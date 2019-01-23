@@ -1,0 +1,84 @@
+﻿@model  projeto.Models.viewmodel
+
+<div>
+    <h4>Endereco</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Nome)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endereco.Pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endereco.Pais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endereco.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endereco.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endereco.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endereco.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endereco.Bairro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endereco.Bairro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endereco.Rua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endereco.Rua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endereco.Numero_casa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endereco.Numero_casa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endereco.Cep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endereco.Cep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endereco.Complemento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endereco.Complemento)
+        </dd>
+
+    </dl>
+</div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.endereco.EnderecoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@  

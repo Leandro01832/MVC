@@ -1,0 +1,10 @@
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\aplicacao\obj\Debug\aplicacao.csprojResolveAssemblyReference.cache
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\aplicacao\bin\Debug\aplicacao.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\aplicacao\bin\Debug\aplicacao.pdb
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\aplicacao\bin\Debug\business.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\aplicacao\bin\Debug\database.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\aplicacao\bin\Debug\MySql.Data.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\aplicacao\bin\Debug\business.pdb
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\aplicacao\bin\Debug\database.pdb
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\aplicacao\obj\Debug\aplicacao.dll
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\aplicacao\obj\Debug\aplicacao.pdb

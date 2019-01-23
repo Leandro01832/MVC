@@ -1,0 +1,268 @@
+﻿@model business.classes.Visitante
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Visitante</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Celula.Cel_nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Celula.Cel_nome)
+        </dd>  
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Chamada.Numero_chamada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chamada.Numero_chamada)
+        </dd>          
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_nascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_nascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado_civil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado_civil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexo_masculino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexo_masculino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexo_feminino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexo_feminino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Falescimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Falescimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Falta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Falta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Img)
+        </dt>
+
+        <dd>
+            @{
+                if (Model.Img != null)
+                {
+                    <img class="img-responsive" src="@Url.Action("Exibir", "arquivo", new {id = Model.Id })" width="350" />
+                }
+                else
+                {
+                    <img class="img-responsive" src="~/arquivos/semimagem.jpg" width="350" />
+                }
+            }
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_visita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_visita)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Condicao_religiosa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Condicao_religiosa)
+        </dd>   
+
+    </dl>
+</div>
+
+<div>
+    <h4>Endereço</h4>
+    <hr />
+    <dl class="dl-horizontal">       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Pais)
+        </dd>       
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Cep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Cep)
+        </dd> 
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Estado)
+        </dd> 
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Cidade)
+        </dd>  
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Rua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Rua)
+        </dd> 
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Numero_casa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Numero_casa)
+        </dd> 
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Complemento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Complemento)
+        </dd> 
+
+    </dl>
+</div>
+
+<div>
+    <h4>Telefone</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone.Fone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone.Fone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone.Celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone.Celular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone.Whatsapp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone.Whatsapp)
+        </dd>
+
+    </dl>
+</div>
+
+<div>
+    <h4>Ministérios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ministerios)
+        </dt>
+
+        <dd>
+            @{
+                for (int i = 0; i < Model.Ministerios.Count; i++)
+                {
+                    var valor = Model.Ministerios[i].Nome;
+                    <a href="/Ministerio/Details/@Model.Ministerios[i].ministerioid">@valor</a>
+                }
+            }
+        </dd>
+
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

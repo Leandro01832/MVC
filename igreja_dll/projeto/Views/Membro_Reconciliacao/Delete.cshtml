@@ -1,0 +1,160 @@
+﻿@model business.classes.Membro_Reconciliacao
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Membro_Reconciliacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Celula.Cel_nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Celula.Cel_nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Pais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone.Fone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone.Fone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_nascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_nascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado_civil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado_civil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexo_masculino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexo_masculino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexo_feminino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexo_feminino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Falescimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Falescimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Falta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Falta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_batismo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_batismo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desligamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desligamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_reconciliacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_reconciliacao)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

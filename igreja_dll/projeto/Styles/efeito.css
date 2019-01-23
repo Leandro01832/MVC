@@ -1,0 +1,53 @@
+﻿
+#pagina{
+	width: 1000px; 
+	margin:100px auto 0;
+}
+
+
+
+#pagina h2{
+	font:20px "Trebuchet MS", Arial, Helvetica, sans-serif; 
+	font-variant:small-caps; 
+	color:black; 
+	margin-bottom:10px; 
+	text-align:center; 
+	padding:10px; 
+	background:#F0F0F0;
+}
+
+
+#pagina .caixa{
+	margin-bottom:1px;
+    width: 800px; 
+	border:1px solid #A52A2A; 
+	color:black; 
+	font:20px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+#pagina .caixa .titulo{
+	padding:15px; 
+	background:#cbcb45; 
+	color:#FFF; 
+	font-weight:bold;
+    font:20px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+#pagina .caixa .titulo:hover{
+	cursor:pointer; 
+	background:#b2cd52;
+}
+
+#pagina .caixa .conteudo{
+	padding:20px; 
+	line-height:150%;
+	height: 600px;
+    width: 400px;	
+	overflow: auto;
+    
+}
+
+#pagina .caixa .hide{
+	display:none;
+}
+
+

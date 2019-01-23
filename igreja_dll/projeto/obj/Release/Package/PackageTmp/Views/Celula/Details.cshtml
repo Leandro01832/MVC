@@ -1,0 +1,120 @@
+﻿@model business.classes.Celula
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Celula</h4>
+    <hr />
+    <dl class="dl-horizontal">       
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Lider.Pessoa.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lider.Pessoa.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lider_treinamento.Pessoa.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lider_treinamento.Pessoa.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Supervisor.Pessoa.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Supervisor.Pessoa.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Supervisor_treianamento.Pessoa.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Supervisor_treianamento.Pessoa.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cel_nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cel_nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dia_semana)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dia_semana)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Horario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Horario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Maximo_pessoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Maximo_pessoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco_Celula.Cel_bairro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco_Celula.Cel_bairro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco_Celula.Cel_rua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco_Celula.Cel_rua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco_Celula.Cel_numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco_Celula.Cel_numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoas)
+        </dt>
+
+         @{  foreach (var pessoa in Model.Pessoas)
+             {
+                <dd>
+                    @Html.DisplayFor(model => pessoa.Nome)
+                </dd>
+             } 
+        }
+        
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Celulaid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

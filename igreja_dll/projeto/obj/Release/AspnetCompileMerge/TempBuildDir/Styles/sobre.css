@@ -1,0 +1,10 @@
+﻿
+.jumbotron{
+    padding: 50px;
+    padding-top: 100px;
+     background-color: #98983f;
+	background-image: linear-gradient(to top, #b2cd52 30%, #98983f 70%);
+	background-attachment: fixed;
+}
+
+

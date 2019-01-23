@@ -1,0 +1,44 @@
+﻿@model  projeto.Models.viewmodel
+
+<div>
+    <h4>Telefone</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Nome)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefone.Fone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefone.Fone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefone.Celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefone.Celular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefone.Whatsapp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefone.Whatsapp)
+        </dd>
+
+    </dl>
+</div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.telefone.telefoneid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@  

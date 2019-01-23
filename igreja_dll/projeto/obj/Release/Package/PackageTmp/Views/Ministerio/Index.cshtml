@@ -1,0 +1,91 @@
+﻿@model IEnumerable<business.classes.Ministerio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Lider.Pessoa.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Proposito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Maximo_pessoa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lider.Pessoa.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Proposito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Maximo_pessoa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ministerioid }) |
+            <a href="#" class="btn btn-default details" data-value="@item.ministerioid">Detalhes</a>
+            @Html.ActionLink("Delete", "Delete", new { id=item.ministerioid })  |
+            @Html.ActionLink("Participar", "participar", new { id = item.ministerioid })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Detalhes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="conteudomodal"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                @*<button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".details").click(function () {
+
+            var id = $(this).data("value");
+
+            $("#conteudomodal").load("/Ministerio/Details/" + id, function () {
+                $('#exampleModalLong').modal("show");
+
+            });
+        });
+    });
+    </script>
+
+}

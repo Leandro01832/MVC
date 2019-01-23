@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="leandro01832-001-site1" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\leand\\Documents\\Visual\ Studio\ 2015\\Projects\\igreja_dll\\projeto\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\leand\\Documents\\Visual\ Studio\ 2015\\Projects\\igreja_dll\\projeto\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=SQL5033.site4now.net;Initial Catalog=DB_A44135_repositorioEF;User ID=DB_A44135_repositorioEF_admin;Password=Manequim1991" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\leand\\Documents\\Visual\ Studio\ 2015\\Projects\\igreja_dll\\projeto\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

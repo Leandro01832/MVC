@@ -1,0 +1,55 @@
+﻿
+#pagina{
+    position: relative;
+	width:1000px; 
+	margin: 5px auto 0;
+    left: 60px;
+    
+}
+
+
+
+#pagina h2{
+	font:20px "Trebuchet MS", Arial, Helvetica, sans-serif; 
+	font-variant:small-caps; 
+	color:black; 
+	margin-bottom:10px; 
+	text-align:center; 
+	padding:5px; 
+	background:#F0F0F0;
+}
+
+
+#pagina .caixa_som{
+	margin-bottom:1px;
+    width: 250px; 
+    height: 90px;
+	border:1px solid #b2cd52; 
+	color:black; 
+	font:20px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+#pagina .caixa_som .titulo{
+	padding:5px; 
+	background:#cbcb45; 
+	color:#FFF; 
+	font-weight:bold;
+}
+#pagina .caixa_som .titulo:hover{
+	cursor:pointer; 
+	background:#98983f;
+}
+#pagina .caixa_som .conteudo{
+	padding:5px; 
+	line-height:150%;
+	height: 50px;	
+	overflow: auto;
+    background-color: #98983f;
+	background-image: linear-gradient(to bottom, #b2cd52 30%, #98983f 70%);
+	background-attachment: fixed;
+}
+
+#pagina .caixa_som .hide{
+	display:none;
+}
+
+

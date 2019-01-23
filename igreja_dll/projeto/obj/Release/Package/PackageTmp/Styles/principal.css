@@ -1,0 +1,12 @@
+﻿body {
+    width: 100%;
+}
+
+.jumbotron{
+    /*background-image:url("../figura/familia.jpg");
+    background-repeat: no-repeat;*/
+    height: 600px;
+   /*background-attachment: fixed;*/
+    width: 90%;
+}
+

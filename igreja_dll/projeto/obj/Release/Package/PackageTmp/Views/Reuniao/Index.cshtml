@@ -1,0 +1,51 @@
+﻿@model IEnumerable<business.classes.Reuniao>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_reuniao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Horario_inicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Horario_fim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Local_reuniao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_reuniao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Horario_inicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Horario_fim)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Local_reuniao)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cronologiaid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cronologiaid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cronologiaid })
+        </td>
+    </tr>
+}
+
+</table>
