@@ -12,7 +12,7 @@ using Microsoft.AspNet.Identity;
 
 namespace projeto.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Ministerio")]
     public class MinisterioController : Controller
     {
         private DB db = new DB();

@@ -1,18 +1,14 @@
-﻿using business.classes;
-using database.banco;
-using System;
+﻿using database.banco;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace business.classes
 {
 
     [Table("Lider")]    
-    public class Cargo_Lider 
+    public class Cargo_Lider : modelocrud<Cargo_Lider>
     {
         [Key, ForeignKey("Pessoa")]
         public int Liderid { get; set; }
@@ -34,29 +30,54 @@ namespace business.classes
            // recuperar(id);
         }
 
-        //public override string salvar()
-        //{
-        //    return base.salvar();
-        //}
+        public override string salvar()
+        {
+            return "";
+        }
 
-        //public override bool recuperar(int id)
-        //{
-        //    return base.recuperar(id);
-        //}
+        public override Cargo_Lider recuperar(int id)
+        {
+          return null;            
+        }
 
-        //public override string excluir()
-        //{
-        //    return base.excluir();
-        //}
+        public Pessoa recuperar_pessoa_lider(int id)
+        {           
+          Pessoa p = this.Pessoa.recuperar(id);
+          return p;            
+        }
 
-        //public override string alterar()
-        //{
-        //    return base.alterar();
-        //}
+        public override string excluir(int id)
+        {
+            delete_padrao = "delete from Lider where Liderid = '@id'";
+            Delete = delete_padrao.Replace("@id", id.ToString());
+            return bd.montar_sql(Delete, null, null);
+        }
 
-        //public override IEnumerable<Pessoa> recuperartodos()
-        //{
-        //    return base.recuperartodos();
-        //}
+        public override string alterar(int id)
+        {
+            update_padrao = "update  Lider set Liderid='@id'";
+            Update = update_padrao.Replace("@id", id.ToString());           
+            return bd.montar_sql(Update, null, null);
+        }
+
+        public override IEnumerable<Cargo_Lider> recuperartodos()
+        {
+            select_padrao = "select * from Lider";
+
+            SqlCommand comando = new SqlCommand(Select, bd.obterconexao());
+
+            SqlDataReader dr = comando.ExecuteReader();
+
+            List<Cargo_Lider> lista = new List<Cargo_Lider>();
+
+            while (dr.Read())
+            {
+                Cargo_Lider cl = new Cargo_Lider();
+                cl.Liderid = int.Parse(dr["Liderid"].ToString());
+                lista.Add(cl);
+            }                
+
+            return lista;
+        }
     }
 }

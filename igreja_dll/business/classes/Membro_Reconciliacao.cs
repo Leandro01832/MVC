@@ -128,9 +128,9 @@ namespace business.classes
             recuperar(id);
         }
 
-        public override string alterar()
+        public override string alterar(int id)
         {
-             base.alterar();
+             base.alterar(id);
             update_padrao = "update membro_reconciliacao set reco_data = '@data'" +
             " from membro_reconciliacao as MR inner join membro as M on M.id_membro=MR.reco_membro inner join pessoa as P on P.pes_id=M.memb_pessoa where pes_nome = '@nome'";
             Update = update_padrao.Replace("@nome", this.Nome);
@@ -139,9 +139,9 @@ namespace business.classes
             return bd.montar_sql(Update, null, null);
         }
 
-        public override string excluir()
+        public override string excluir(int id)
         {
-            return base.excluir();
+            return base.excluir(id);
         }
 
         public override Pessoa recuperar(int id)
@@ -152,13 +152,12 @@ namespace business.classes
         public Membro_Reconciliacao recuperar_membro_reconciliacao(int id)
         {
             Pessoa p = recuperar(id);
-            select_padrao = "select * from pessoa inner join endereco on pes_id=end_pessoa inner join telefone on pes_id=tel_pessoa @innerjoin where Pessoa_id='" + id + "'";
+            
+            select_padrao = " select * from Pessoa as P inner join Endereco as E on P.Id=E.EnderecoId inner join Telefone as T on E.Id=T.telefoneid "
+            + " inner join Membro as M on P.Id=M.Id inner join Membro_Reconciliacao as MR on M.Id=MR.Id "
+            + " where P.Id='" + id + "'";
 
-            Select = select_padrao.Replace("@nome", this.Nome);
-            Select = Select.Replace("@cpf", this.Cpf);
-            Select = Select.Replace("@innerjoin", " inner join membro on pes_id=memb_pessoa inner join membro_reconciliacao on id_membro=reco_membro ");
-
-            SqlCommand comando = new SqlCommand(Select, bd.obterconexao());
+            SqlCommand comando = new SqlCommand(select_padrao, bd.obterconexao());
 
             SqlDataReader dr = comando.ExecuteReader();
 
@@ -220,9 +219,9 @@ namespace business.classes
         {
              base.salvar();            
 
-            insert_padrao = "insert into membro_reconciliacao (Data_reconciliacao, id_membro) values ('@data', IDENT_CURRENT('Membro'))";
+            insert_padrao = "insert into Membro_Reconciliacao (Data_reconciliacao, Id) values ('@data', IDENT_CURRENT('Pessoa'))";
 
-            Insert = insert_padrao.Replace("@data", data_reconciliacao.ToString());
+            Insert = insert_padrao.Replace("@data", Data_reconciliacao.ToString());
 
             return bd.montar_sql(Insert, null, null);
         }

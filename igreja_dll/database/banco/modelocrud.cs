@@ -77,8 +77,8 @@ namespace database.banco
         }
 
         public abstract string salvar();
-        public abstract string alterar();
-        public abstract string excluir();
+        public abstract string alterar( int id);
+        public abstract string excluir(int id);
         public abstract T recuperar(int id);
         public abstract IEnumerable<T> recuperartodos();
     }

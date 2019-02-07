@@ -173,9 +173,9 @@ namespace business.classes
             recuperar(id);
         }
 
-        public override string alterar()
+        public override string alterar(int id)
         {
-             base.alterar();
+             base.alterar(id);
 
             update_padrao = "update Membro_transferencia set Nome_cidade_transferencia ='@cidade_transferencia', Nome_igreja_transferencia='@igreja', Estado_transferencia='@estado'" +
                 " from Membro_transferencia as MT inner join Membro as M on M.Id=id_membro inner join Pessoa as P on P.Pessoa_id=id_pessoa where P.Pessoa_id='@id' ";
@@ -188,17 +188,9 @@ namespace business.classes
             return bd.montar_sql(Update, null, null);
         }
 
-        public override string excluir()
-        {
-            delete_padrao =
-              " delete Membro_transferencia from Membro_transferencia as MT inner " +
-              " join Membro as M on M.Id=id_membro inner join Pessoa as P on " +
-              " P.Pessoa_id=id_pessoa where P.Pessoa_id='@id' ";
-            Delete = delete_padrao.Replace("@id", this.Id.ToString());
-
-            bd.montar_sql(Delete, null, null);
-            base.excluir();
-            return "";
+        public override string excluir(int id)
+        {           
+            return base.excluir(id);
         }
 
         public override Pessoa recuperar(int id)
@@ -208,15 +200,12 @@ namespace business.classes
 
         public  Membro_Transferencia recuperar_membro_transferencia(int id)
         {
-            Pessoa p = recuperar(id);            
-            select_padrao = "select * from pessoa inner join endereco on pes_id=end_pessoa inner join telefone on pes_id=tel_pessoa @innerjoin " +
-                " where Pessoa_id='" + id + "'";
+            Pessoa p = recuperar(id);
+            select_padrao = " select * from Pessoa as P inner join Endereco as E on P.Id=E.EnderecoId inner join Telefone as T on E.Id=T.telefoneid "
+            + " inner join Membro as M on P.Id=M.Id inner join Membro_transferencia as MT on M.Id=MT.Id "
+            + " where P.Id='" + id + "'";
 
-            Select = select_padrao.Replace("@nome", this.Nome);
-            Select = Select.Replace("@cpf", this.Cpf);
-            Select = Select.Replace("@innerjoin", " inner join membro on pes_id=memb_pessoa inner join membro_transferencia on id_membro=trans_membro ");
-
-            SqlCommand comando = new SqlCommand(Select, bd.obterconexao());
+            SqlCommand comando = new SqlCommand(select_padrao, bd.obterconexao());
 
             SqlDataReader dr = comando.ExecuteReader();
 
@@ -281,13 +270,13 @@ namespace business.classes
 
              base.salvar();
 
-            insert_padrao = "insert into membro_transferencia (Nome_cidade_transferencia, Estado_transferencia, Nome_igreja_transferencia, id_membro) values" +
+            insert_padrao = "insert into Membro_transferencia (Nome_cidade_transferencia, Estado_transferencia, Nome_igreja_transferencia, Id) values" +
 
-              " ('@cidade', '@estado', '@nome_igreja', IDENT_CURRENT('Membro'))";
+              " ('@cidade', '@estado', '@nome_igreja', IDENT_CURRENT('Pessoa'))";
 
-            Insert = insert_padrao.Replace("@cidade", nome_cidade_transferencia);
-            Insert = Insert.Replace("@estado", estado_transferencia);
-            Insert = Insert.Replace("@nome_igreja", nome_igreja_transferencia);
+            Insert = insert_padrao.Replace("@cidade", Nome_cidade_transferencia);
+            Insert = Insert.Replace("@estado", Estado_transferencia);
+            Insert = Insert.Replace("@nome_igreja", Nome_igreja_transferencia);
             
 
             return bd.montar_sql(Insert, null, null);

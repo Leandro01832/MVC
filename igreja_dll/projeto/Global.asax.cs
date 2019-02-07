@@ -18,8 +18,7 @@ namespace projeto
     {
         protected void Application_Start()
         {
-            Database.SetInitializer<DB>(new DropCreateDatabaseIfModelChanges<DB>());
-
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<repositorioEF.DB, repositorioEF.Migrations.Configuration>());
             ApplicationDbContext db = new ApplicationDbContext();
             criaroles(db);
             criarsuperuser(db);
@@ -51,6 +50,41 @@ namespace projeto
             if (!usermaneger.IsInRole(user.Id, "EditCelula"))
             {
                 usermaneger.AddToRole(user.Id, "EditCelula");
+            }
+
+            if (!usermaneger.IsInRole(user.Id, "Reuniao"))
+            {
+                usermaneger.AddToRole(user.Id, "Reuniao");
+            }
+
+            if (!usermaneger.IsInRole(user.Id, "Ministerio"))
+            {
+                usermaneger.AddToRole(user.Id, "Ministerio");
+            }
+
+            if (!usermaneger.IsInRole(user.Id, "Lider"))
+            {
+                usermaneger.AddToRole(user.Id, "Lider");
+            }
+
+            if (!usermaneger.IsInRole(user.Id, "Lider_treinamento"))
+            {
+                usermaneger.AddToRole(user.Id, "Lider_treinamento");
+            }
+
+            if (!usermaneger.IsInRole(user.Id, "Administrador"))
+            {
+                usermaneger.AddToRole(user.Id, "Administrador");
+            }
+
+            if (!usermaneger.IsInRole(user.Id, "Supervisor"))
+            {
+                usermaneger.AddToRole(user.Id, "Supervisor");
+            }
+
+            if (!usermaneger.IsInRole(user.Id, "Supervisor_treinamento"))
+            {
+                usermaneger.AddToRole(user.Id, "Supervisor_treinamento");
             }
 
             if (!usermaneger.IsInRole(user.Id, "Create"))
@@ -97,6 +131,16 @@ namespace projeto
                 rolemanager.Create(new IdentityRole("Create"));
             }
 
+            if (!rolemanager.RoleExists("Reuniao"))
+            {
+                rolemanager.Create(new IdentityRole("Reuniao"));
+            }
+
+            if (!rolemanager.RoleExists("Ministerio"))
+            {
+                rolemanager.Create(new IdentityRole("Ministerio"));
+            }
+
             if (!rolemanager.RoleExists("Edit"))
             {
                 rolemanager.Create(new IdentityRole("Edit"));
@@ -105,6 +149,31 @@ namespace projeto
             if (!rolemanager.RoleExists("EditCelula"))
             {
                 rolemanager.Create(new IdentityRole("EditCelula"));
+            }
+
+            if (!rolemanager.RoleExists("Lider"))
+            {
+                rolemanager.Create(new IdentityRole("Lider"));
+            }
+
+            if (!rolemanager.RoleExists("Lider_treinamento"))
+            {
+                rolemanager.Create(new IdentityRole("Lider_treinamento"));
+            }
+
+            if (!rolemanager.RoleExists("Administrador"))
+            {
+                rolemanager.Create(new IdentityRole("Administrador"));
+            }
+
+            if (!rolemanager.RoleExists("Supervisor"))
+            {
+                rolemanager.Create(new IdentityRole("Supervisor"));
+            }
+
+            if (!rolemanager.RoleExists("Supervisor_treinamento"))
+            {
+                rolemanager.Create(new IdentityRole("Supervisor_treinamento"));
             }
 
             if (!rolemanager.RoleExists("Delete"))

@@ -4,12 +4,15 @@
 
 }
 
-.carousel-item { 
-	width: 70%; 
-	overflow: hidden; 
-	height: 600px; 
-	margin: 50px auto; 
-	box-shadow: 0 0 10px #000; 
-	position: relative;
-     
-} 
+.img3 {
+    height: 100%;
+}
+
+.img2 {
+    height: 100%;
+}
+
+.img1 {
+    height: 100%;
+}
+

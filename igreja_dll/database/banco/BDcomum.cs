@@ -12,7 +12,8 @@ namespace database.banco
 {
     public class BDcomum
     {
-        public static string conecta1 = @"Data Source=LAPTOP-9LQ8LUGC\SQLEXPRESS;Initial Catalog=site.context.DB;Integrated Security=True";
+       // string conexao_local = @"Data Source=LAPTOP-9LQ8LUGC\SQLEXPRESS;Initial Catalog=repositorioEF.DB;Integrated Security=True";
+        public static string conecta1 = @"Data Source=repositorioEF.mssql.somee.com;packet size=4096;user id=leandro01832_SQLLogin_1;pwd=7tewoxjz8k;data source=repositorioEF.mssql.somee.com;persist security info=False;initial catalog=repositorioEF";
         public string sql;
         public int i;
         SqlParameter imag;
@@ -20,9 +21,17 @@ namespace database.banco
 
         public  SqlConnection obterconexao()
         {
-            SqlConnection conn = new SqlConnection(conecta1);
-            conn.Open();
-            return conn;
+            try
+            {
+                SqlConnection conn = new SqlConnection(conecta1);
+                conn.Open();
+                return conn;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Você não esta conectado. " + ex.Message);
+                return null;
+            }
         }
 
         public string buscar_dados(string comand, TextBox nome, TextBox cpf, TextBox rg, ListBox estado_civil, TextBox pais, TextBox cep,
@@ -41,7 +50,7 @@ namespace database.banco
             
                 if (imagem != null)
                 {
-                    comand = "update pessoa set pes_foto=@foto where pes_id=@id";
+                    comand = "update Pessoa set Img=@foto where Id=IDENT_CURRENT('Pessoa')";
                     MemoryStream memory = new MemoryStream();
                     Bitmap btp = new Bitmap(imagem.ImageLocation);
                     btp.Save(memory, ImageFormat.Bmp);

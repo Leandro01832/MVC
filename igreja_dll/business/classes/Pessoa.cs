@@ -7,6 +7,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace business.classes
 {
@@ -89,6 +91,7 @@ namespace business.classes
             }
         }
 
+        
         [Display(Name = "RG")]
         [Required(ErrorMessage = "Este campo precisa ser preenchido")]
         public string Rg
@@ -185,6 +188,7 @@ namespace business.classes
             }
         }
 
+        [ScaffoldColumn(false)]
         public bool Falescimento
         {
             get
@@ -233,7 +237,7 @@ namespace business.classes
             }
         }
 
-        [Required(ErrorMessage = "Este campo precisa ser preenchido")]
+        [ScaffoldColumn(false)]
         public int Falta
         {
             get
@@ -320,7 +324,7 @@ namespace business.classes
 
         public virtual List<Reuniao> Reuniao { get; set; }
 
-        [Display(Name = "Foto do perfil")]
+        [Display(Name = "Foto do perfil")]        
         public byte[] Img
         {
             get
@@ -373,93 +377,93 @@ namespace business.classes
             insert_padrao = 
      "insert into Pessoa (Nome, Data_nascimento, Estado_civil, Sexo_masculino, " +
      "Rg, Cpf, Sexo_feminino, Falescimento, " +
-     "Email, Status, Falta, Endereco_Id, Telefone_Id)" +
+     "Email, Status, Falta, imgtipo, celula_)" +
      " values ('@nome', '@data_nascimento', '@estado_civil', '@sexo_masculino'," +
      " '@rg', '@cpf', '@sexo_feminino', '@falescimento', '@email', " +
-     " '@status', '@faltas', @img, @imgtipo " +
-     this.Telefone.salvar();        
+     " '@status', '@faltas', '@imgtipo', '@celula') " +
+     this.Telefone.salvar() + " " +
+     this.Endereco.salvar() + " " +
+     this.Chamada.salvar();        
            
-            Insert = insert_padrao.Replace("@nome", nome);
+            Insert = insert_padrao.Replace("@nome", Nome);
             DateTime myDateTime = DateTime.Now;
-            string sqlFormattedDate = data_nascimento.ToString("yyyy-MM-dd 00.00.00.000");
-            Insert = Insert.Replace("@data_nascimento", data_nascimento.ToString());
-            Insert = Insert.Replace("@estado_civil", estado_civil);
-            Insert = Insert.Replace("@sexo_masculino", sexo_masculino.ToString());
-            Insert = Insert.Replace("@rg", rg);
-            Insert = Insert.Replace("@cpf", cpf);
-            Insert = Insert.Replace("@sexo_feminino", sexo_feminino.ToString());
-            Insert = Insert.Replace("@email", email);
-            Insert = Insert.Replace("@status", status);
-            Insert = Insert.Replace("@faltas", falta.ToString());
+            string sqlFormattedDate = this.data_nascimento.ToString("yyyy-MM-dd 00.00.00.000");
+            Insert = Insert.Replace("@data_nascimento", this.data_nascimento.ToString());
+            Insert = Insert.Replace("@estado_civil", this.estado_civil);
+            Insert = Insert.Replace("@sexo_masculino", this.sexo_masculino.ToString());
+            Insert = Insert.Replace("@rg", this.rg);
+            Insert = Insert.Replace("@cpf", this.cpf);
+            Insert = Insert.Replace("@sexo_feminino", this.sexo_feminino.ToString());
+            Insert = Insert.Replace("@email", this.email);
+            Insert = Insert.Replace("@status", this.status);
+            Insert = Insert.Replace("@faltas", this.falta.ToString());
             Insert = Insert.Replace("@falescimento", false.ToString());
-            Insert = Insert.Replace("@imgtipo", imgtipo);
-          //  Insert = Insert.Replace("@img", img);          
-           
-            
+            Insert = Insert.Replace("@imgtipo", "");
+            Insert = Insert.Replace("@celula", this.celula_.ToString());            
 
             return bd.montar_sql(Insert, null, null);            
         }
 
-        public override string alterar()
+        public override string alterar( int id)
         {
        update_padrao = "update Pessoa set Nome='@nome_pessoa', Estado_civil='@estado_civil', " +
        "Rg='@rg', Cpf='@cpf', Falescimento='@falescimento', Email='@email', Status='@status' " +
-       "  where Pessoa_id='@id' " +
+       "  where Id='@id' " +
        "update Telefone set Fone = '@telefone', Celular = '@celular', Whatsapp = '@whatsapp' " +
-       " from Telefone as T inner join Pessoa as P on T.Id=Telefone_Id where P.Pessoa_id='@id'" +
+       " from Telefone as T inner join Pessoa as P on T.telefoneid=P.Id where P.Id='@id'" +
        " update Endereco set Pais ='@pais', Estado = '@estado',  Cep = '@cep', " +
        " Cidade = '@cidade', Bairro = '@bairro', Rua = '@rua', " +
-       " Numero_casa=@numero,  Complemento='@complemento' from Endereco as E inner join Pessoa as P on E.Id=Endereco_Id where " +
-       "P.Pessoa_id='@id' ";
+       " Numero_casa=@numero,  Complemento='@complemento' from Endereco as E inner join Pessoa as P on E.EnderecoId=P.Id where " +
+       "P.Id='@id' ";
 
             bd = new BDcomum();
 
             Update = update_padrao.Replace("@nome_pessoa", nome);
-            Update = Update.Replace("@id", pessoa_id.ToString());            
-            string sqlFormattedDate = data_nascimento.ToString("yyyy-MM-dd 00.00.00.000");
-            Update = Update.Replace("@data_nascimento", data_nascimento.ToString());
-            Update = Update.Replace("@estado_civil", estado_civil);
-            Update = Update.Replace("@sexo_masculino", sexo_masculino.ToString());
-            Update = Update.Replace("@rg", rg);
-            Update = Update.Replace("@cpf", cpf);
+            Update = Update.Replace("@id", id.ToString());            
+            string sqlFormattedDate = this.data_nascimento.ToString("yyyy-MM-dd 00.00.00.000");
+            Update = Update.Replace("@data_nascimento", this.data_nascimento.ToString());
+            Update = Update.Replace("@estado_civil", this.estado_civil);
+            Update = Update.Replace("@sexo_masculino", this.sexo_masculino.ToString());
+            Update = Update.Replace("@rg", this.rg);
+            Update = Update.Replace("@cpf", this.cpf);
             Update = Update.Replace("@sexo_feminino", sexo_feminino.ToString());
-            Update = Update.Replace("@email", email);
-            Update = Update.Replace("@status", status);
-            Update = Update.Replace("@faltas", falta.ToString());
+            Update = Update.Replace("@email", this.email);
+            Update = Update.Replace("@status", this.status);
+            Update = Update.Replace("@faltas", this.falta.ToString());
             Update = Update.Replace("@falescimento", false.ToString());
 
-            Update = Update.Replace("@telefone", Telefone.Fone);
-            Update = Update.Replace("@celular", Telefone.Celular);
-            Update = Update.Replace("@whatsapp", Telefone.Whatsapp);
+            Update = Update.Replace("@telefone", this.Telefone.Fone);
+            Update = Update.Replace("@celular", this.Telefone.Celular);
+            Update = Update.Replace("@whatsapp", this.Telefone.Whatsapp);
 
-            Update = Update.Replace("@pais", Endereco.Pais);            
-            Update = Update.Replace("@estado", Endereco.Estado);
-            Update = Update.Replace("@cidade", Endereco.Cidade);
-            Update = Update.Replace("@bairro", Endereco.Bairro);
-            Update = Update.Replace("@rua", Endereco.Rua);
-            Update = Update.Replace("@numero", Endereco.Numero_casa.ToString());
-            Update = Update.Replace("@cep", Endereco.Cep.ToString());
-            Update = Update.Replace("@complemento", Endereco.Complemento);
+            Update = Update.Replace("@pais", this.Endereco.Pais);            
+            Update = Update.Replace("@estado", this.Endereco.Estado);
+            Update = Update.Replace("@cidade", this.Endereco.Cidade);
+            Update = Update.Replace("@bairro", this.Endereco.Bairro);
+            Update = Update.Replace("@rua", this.Endereco.Rua);
+            Update = Update.Replace("@numero", this.Endereco.Numero_casa.ToString());
+            Update = Update.Replace("@cep", this.Endereco.Cep.ToString());
+            Update = Update.Replace("@complemento", this.Endereco.Complemento);
 
 
             return bd.montar_sql(Update, null, null);
 
         }
 
-        public override string excluir()
+        public override string excluir(int id)
         {
-            delete_padrao = "delete from pessoa where Pessoa_id='@id'" +
+            delete_padrao = "delete from Pessoa as P where P.Id='@id'" +
                 " delete Telefone from Telefone as T inner " +
-                " join Pessoa as P on T.Id=Telefone_Id" +
-                " where P.Pessoa_id='@id' " +
+                " join Pessoa as P on T.telefoneid=P.Id" +
+                " where P.Id='@id' " +
                 "delete Endereco from Endereco as E inner " +
-                "join Pessoa as P on E.Id=Endereco_Id" +
-                " where P.Pessoa_id='@id'";
-            Delete = delete_padrao.Replace("@id", pessoa_id.ToString());
+                "join Pessoa as P on E.EnderecoId=P.Id" +
+                " where P.Id='@id'";
+            Delete = delete_padrao.Replace("@id", id.ToString());
 
             bd.montar_sql(Delete, null, null);
             
-            return "";
+            return Delete;
         }
 
         public override Pessoa recuperar(int id)
@@ -468,14 +472,16 @@ namespace business.classes
             select_padrao = "select * from Pessoa as P "
            + " inner join Endereco as E on E.EnderecoId=P.Id " 
            + " inner join Telefone as T on T.telefoneid=P.Id "
-           + " inner join Chamada as CH on CH.chamadaid=P.ID "
-           + " inner join ReuniaoPessoa as REPE on REPE.Pessoa_Id=P.Id "
-           + " inner join MinisterioPessoa as MIPE on MIPE.Pessoa_Id=P.Id "
-           + " inner join Historico as H on H.pessoaid=P.Id "
-           + " inner join Lider as L on L.Liderid=P.Id "
-           + " inner join Lider_treinamento as LT on LT.lidertreinamentoid=P.Id "
-           + " inner join Supervisor as S on S.Supervisorid=P.Id "
-           + " inner join Supervisor_treinamento as ST on ST.Supervisortreinamentoid=P.Id "          
+           + " left join Celula as CEL on CEL.Celulaid=P.celula_ "
+           + " left join Endereco_celula as ENCEL on ENCEL.enderecoid=CEL.Celulaid "
+           + " left join Chamada as CH on CH.chamadaid=P.Id "
+           + " left join ReuniaoPessoa as REPE on REPE.Pessoa_Id=P.Id "
+           + " left join MinisterioPessoa as MIPE on MIPE.Pessoa_Id=P.Id "
+           + " left join Historico as H on H.pessoaid=P.Id "
+           + " left join Lider as L on L.Liderid=P.Id "
+           + " left join Lider_treinamento as LT on LT.lidertreinamentoid=P.Id "
+           + " left join Supervisor as S on S.Supervisorid=P.Id "
+           + " left join Supervisor_treinamento as ST on ST.Supervisortreinamentoid=P.Id "
            + " where  P.Id='" + id+"'";
 
             Select = select_padrao.Replace("@id", Id.ToString());            
@@ -494,8 +500,8 @@ namespace business.classes
                 try
                 {
                     dr.Read();
-
-                    this.Id = int.Parse(Convert.ToString(dr["Pessoa_id"]));
+                    this.Img = (byte[])(dr["Img"]);
+                    this.Id = int.Parse(Convert.ToString(dr["Id"]));
                     this.Nome = Convert.ToString(dr["Nome"]);
                     this.Email = Convert.ToString(dr["Email"]);
                     this.Falta = int.Parse(dr["Falta"].ToString());
@@ -506,10 +512,12 @@ namespace business.classes
                     this.Rg = Convert.ToString(dr["Rg"]);
                     this.Data_nascimento = Convert.ToDateTime(Convert.ToString(dr["Data_nascimento"]));
                     this.Cpf = Convert.ToString(dr["Cpf"]);
-                    this.Status = Convert.ToString(dr["Status"]);                    
+                    this.Status = Convert.ToString(dr["Status"]);
+                    this.Telefone = new Telefone();                   
                     this.Telefone.Fone = Convert.ToString(dr["Fone"]);
                     this.Telefone.Celular = Convert.ToString(dr["Celular"]);
                     this.Telefone.Whatsapp = Convert.ToString(dr["Whatsapp"]);
+                    this.Endereco = new Endereco();
                     this.Endereco.Cep = long.Parse(Convert.ToString(dr["Cep"]));
                     this.Endereco.Pais = Convert.ToString(dr["Pais"]);
                     this.Endereco.Estado = Convert.ToString(dr["Estado"]);
@@ -517,17 +525,35 @@ namespace business.classes
                     this.Endereco.Bairro = Convert.ToString(dr["Bairro"]);
                     this.Endereco.Rua = Convert.ToString(dr["Rua"]);
                     this.Endereco.Complemento = Convert.ToString(dr["Complemento"]);
-                    this.Endereco.Numero_casa = int.Parse(Convert.ToString(dr["Numero"]));
+                    this.Endereco.Numero_casa = int.Parse(Convert.ToString(dr["Numero_casa"]));
+                    this.Chamada = new Chamada();
                     this.Chamada.Data_inicio = Convert.ToDateTime(dr["Data_inicio"]);
                     this.Chamada.Numero_chamada = int.Parse(dr["Numero_chamada"].ToString());
-                    this.Celula.Celulaid = int.Parse(dr["celulaid"].ToString());
-                    this.Celula.Supervisor_ = int.Parse(dr["Supervisor"].ToString());
-                    this.Celula.Supervisortreinamento_ = int.Parse(dr["Supervisortreinamento_"].ToString());
+                    this.Celula = new Celula();
+                    this.Celula.Celulaid = int.Parse(dr["Celulaid"].ToString());
+                    this.Celula.Supervisor_ = int.Parse(dr["Supervisor_"].ToString());
+                    this.Celula.Supervisortreinamento_ = int.Parse(dr["Supervisortreinamento_"].ToString());                    
                     this.Celula.Lider_ = int.Parse(dr["Lider_"].ToString());
-                    this.Celula.Lidertreinamento_ = int.Parse(dr["Lidertreinamento_"].ToString());
+                    this.Celula.Lidertreinamento_ = int.Parse(dr["Lidertreinamento_"].ToString());                    
                     this.Celula.Pessoas = this.Celula.preenchercelula(this.Celula.Celulaid);
                     this.Celula.Maximo_pessoa = int.Parse(dr["Maximo_pessoa"].ToString());
-                    
+                    this.Celula.Horario = TimeSpan.Parse(dr["Horario"].ToString());
+                    this.Celula.Cel_nome = dr["Cel_nome"].ToString();
+                    this.Celula.Dia_semana = dr["Dia_semana"].ToString();
+                    this.Celula.Endereco_Celula = new Endereco_Celula();
+                    this.Celula.Endereco_Celula.Cel_bairro = dr["Cel_bairro"].ToString();
+                    this.Celula.Endereco_Celula.Cel_numero = int.Parse(dr["Cel_numero"].ToString());
+                    this.Celula.Endereco_Celula.Cel_rua = dr["Cel_rua"].ToString();
+                    this.Cargo_Lider = new Cargo_Lider();
+                    this.Cargo_Lider.Liderid = int.Parse(dr["Liderid"].ToString());
+                    this.Cargo_Lider_Treinamento = new Cargo_Lider_Treinamento();
+                    this.Cargo_Lider_Treinamento.Lidertreinamentoid = int.Parse(dr["Lidertreinamentoid"].ToString());
+                    this.Cargo_Supervisor = new Cargo_Supervisor();
+                    this.Cargo_Supervisor.Supervisorid = int.Parse(dr["Supervisorid"].ToString());
+                    this.Cargo_Supervisor_Treinamento = new Cargo_Supervisor_Treinamento();
+                    this.Cargo_Supervisor_Treinamento.Supervisortreinamentoid = int.Parse(dr["Supervisortreinamentoid"].ToString());
+
+
                     while (dr.Read())
                     {
                         Historico h = new Historico();
@@ -641,6 +667,7 @@ namespace business.classes
                         this.Email = Convert.ToString(dr["Email"]);
                         this.Estado_civil = Convert.ToString(dr["Estado_civil"]);
                         this.Falescimento = Convert.ToBoolean(Convert.ToString(dr["Falescimento"]));
+                        this.Img = (byte[])(dr["Img"]);
                         pessoa.Add(this);
                     }
 

@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace projeto.Controllers
 {
-    [Authorize(Users = "leandroleanleo@gmail.com")]
+    [Authorize(Roles = "Administrador")]
     public class UsersController : Controller
     {
 

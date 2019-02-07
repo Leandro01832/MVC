@@ -193,32 +193,45 @@ namespace business.classes
             bd = new BDcomum();
         }      
 
-        public override string alterar()
+        public override string alterar(int id)
         {
-            update_padrao = "update celula set cel_lider='@lider', cel_horario='@horario'," +
-            " cel_lider_treinamento='@treino', cel_dia_semana='@dia_semana' where id_celula='@id' " +
+            update_padrao = "update Celula set Cel_nome='@nome', Lider_='@lider', Horario='@horario'," +
+            " Lidertreinamento_='@li_treinanmento', Dia_semana='@dia_semana', Maximo_pessoa='@maximo' " +
+            " Supervisor_='@supervisor', Supervisortreinamento_='@sup_treinamento' where Celulaid='@id' " +
             "update endereco_celula set cel_bairro='@bairro', cel_rua='@rua', cel_numero='@numero' " +
-            " from endereco_celula inner join celula on id_celula=end_celula where id_celula='@id'";
-            Update = update_padrao.Replace("@id", this.Cel_nome.ToString());            
-            Update = Update.Replace("@dia_semana", dia_semana);
+            " from endereco_celula inner join celula on Celulaid=enderecoid where Celulaid='@id'";
+            Update = update_padrao.Replace("@id", id.ToString());
+            Update = Update.Replace("@nome", Cel_nome);
+            Update = Update.Replace("@lider", Lider_.ToString());
+            Update = Update.Replace("@li_treinamento", Lidertreinamento_.ToString());
+            Update = Update.Replace("@supervisor", Supervisor_.ToString());
+            Update = Update.Replace("@sup_treinamento", Supervisortreinamento_.ToString());
+            Update = Update.Replace("@dia_semana", Dia_semana);
+            Update = Update.Replace("@maximo", Maximo_pessoa.ToString());
             Update = Update.Replace("@horario", horario.ToString("HH:mm:ss"));
-            Update = Update.Replace("@bairro", Endereco_Celula.Cel_bairro);
-            Update = Update.Replace("@rua", Endereco_Celula.Cel_rua);
-            Update = Update.Replace("@numero", Endereco_Celula.Cel_numero.ToString());
+            Update = Update.Replace("@bairro", this.Endereco_Celula.Cel_bairro);
+            Update = Update.Replace("@rua", this.Endereco_Celula.Cel_rua);
+            Update = Update.Replace("@numero", this.Endereco_Celula.Cel_numero.ToString());
             return bd.montar_sql(Update, null, null);
 
         }
 
-        public override string excluir()
+        public override string excluir(int id)
         {
-            throw new NotImplementedException();
+            delete_padrao = "delete from Celula where Celulaid='@id'"
+                + " delete from Endereco_celula from Endereco_celula"
+                + " as EC inner join Celula as C on CE.enderecoid=C.Celulaid"
+                + " where C.Celulaid='@id'";
+            Delete = delete_padrao.Replace("@id", id.ToString());
+
+            return bd.montar_sql(Delete, null, null);
         }
 
         public override Celula recuperar(int id)
         {           
                 bd = new BDcomum();
-                select_padrao = "select * from celula inner join endereco_celula on id_celula=end_celula" +
-                     " where id_celula='" + id + "' order by id_celula asc";
+                select_padrao = "select * from Celula as C inner join Endereco_celula as EC on C.Celulaid=EC.enderecoid" +
+                     " where C.Celulaid='@id' ";
                 Select = select_padrao.Replace("@id", id.ToString());
 
             SqlCommand comando = new SqlCommand(Select, bd.obterconexao());
@@ -235,8 +248,12 @@ namespace business.classes
                 {
                     dr.Read();
 
-                    int i = int.Parse(Convert.ToString(dr["Id"]));
+                    this.Celulaid = int.Parse(Convert.ToString(dr["Celulaid"]));
                     this.cel_nome = Convert.ToString(dr["Cel_nome"]);
+                    this.Lider_ = int.Parse(dr["Lider_"].ToString());
+                    this.Lidertreinamento_ = int.Parse(dr["Lidertreinamento_"].ToString());
+                    this.Supervisor_ = int.Parse(dr["Supervisor_"].ToString());
+                    this.Supervisortreinamento_ = int.Parse(dr["Supervisortreianamento_"].ToString());
                     this.Dia_semana = Convert.ToString(dr["Dia_semana"]);
                     this.Endereco_Celula.Cel_bairro = Convert.ToString(dr["Cel_bairro"]);
                     this.Endereco_Celula.Cel_numero = int.Parse(Convert.ToString(dr["Cel_numero"]));
@@ -265,45 +282,37 @@ namespace business.classes
 
         public override string salvar()
         {
-            pessoas = preenchercelula(this.Celulaid);
-            Maximo_pessoa = buscarmaximo();
-
-            if (Maximo_pessoa == 0)
-            {
-                Maximo_pessoa = 70;
-            }
-
-            if (pessoas.Count > Maximo_pessoa)
-            {
-                MessageBox.Show("esta celula ja esta cheia");
-                return "";
-            }
-            else
-            {
-                Endereco_Celula.salvar();
-               // Lider.salvar();
-               // Lider_treinamento.salvar();
-               // Supervisor.salvar();
-              //  Supervisor_treianamento.salvar();
-                insert_padrao = "insert into celula(Cel_nome, Dia_semana, Horario, Maximo_pessoa "
+            insert_padrao = "insert into Celula (Cel_nome, Dia_semana, Horario, Maximo_pessoa "
              + "Endereco_Id, Lider_Id, Lider_treinamento_Id, Supervisor_Id, Supervisor_Treinamento_id) " +
              "values ('@nome', '@dia_semana', '@horario', '@maximo' "
-             + " IDENT_CURRENT('Endereco'), IDENT_CURRENT('Lider'), IDENT_CURRENT('Lider_treinamento'), IDENT_CURRENT('Supervisor'), IDENT_CURRENT('Supervisor_Treinamento')) ";
+             + " '@lider', '@li_treinamento', '@supervisor', '@sup_treinamento' " 
+             + Endereco_Celula.salvar();
 
-                Insert = insert_padrao.Replace("@nome", cel_nome);               
-                Insert = Insert.Replace("@dia_semana", dia_semana);
-                Insert = Insert.Replace("@horario", horario.ToString("HH:mm:ss"));
-                Insert = Insert.Replace("@maximo", Maximo_pessoa.ToString());               
+                Insert = insert_padrao.Replace("@nome", Cel_nome);               
+                Insert = Insert.Replace("@dia_semana", Dia_semana);
+                Insert = Insert.Replace("@horario", Horario.ToString());
+                Insert = Insert.Replace("@maximo", Maximo_pessoa.ToString());
+                Insert = Insert.Replace("@lider", Lider_.ToString());
+                Insert = Insert.Replace("@li_treinamento", Lidertreinamento_.ToString());
+                Insert = Insert.Replace("@supervisor", Supervisor_.ToString());
+                Insert = Insert.Replace("@sup_treinamento", Supervisortreinamento_.ToString());
+                Insert = insert_padrao.Replace("@bairro", this.Endereco_Celula.Cel_bairro);
+                Insert = Insert.Replace("@rua", this.Endereco_Celula.Cel_rua);
+                Insert = Insert.Replace("@numero", this.Endereco_Celula.Cel_numero.ToString());
 
-                return bd.montar_sql(Insert, null, null);
-            }                   
+            return bd.montar_sql(Insert, null, null);                              
         }
 
         public List<Pessoa> preenchercelula(int id)
         {
-            select_padrao = "select * from pessoa inner join celula_pessoa" +
-                " on pes_id=cel_pessoa inner join celula on id_celula=pes_celula" +
-                " where id_celula='@id'";
+            select_padrao = "select * from Pessoa as P " +
+                " inner join Celula as C" +
+                " on P.celula_=C.Celulaid" +
+                " inner join Endereco as E" +
+                " on E.EnderecoId=P.Id" +
+                " inner join Telefone as T" +
+                " on T.telefoneid=P.Id" +
+                " where C.Celulaid='@id'";
             Select = select_padrao.Replace("@id", id.ToString());
 
             DataTable datatable = bd.lista(Select);
@@ -311,91 +320,68 @@ namespace business.classes
             List<Pessoa> lista = new List<Pessoa>();
             foreach (DataRow dtrow in datatable.Rows)
             {
-                var pessoa = new business.classes.Pessoa();
-                pessoa.Id = int.Parse(Convert.ToString(dtrow["Pessoa_id"]));
+                var pessoa = new Pessoa();
+                pessoa.Id = int.Parse(Convert.ToString(dtrow["Id"]));
                 pessoa.Nome = Convert.ToString(dtrow["Nome"]);
+                pessoa.Status = Convert.ToString(dtrow["Status"]);
+                pessoa.Email = Convert.ToString(dtrow["Email"]);
+                pessoa.Estado_civil = Convert.ToString(dtrow["Estado_civil"]);
+                pessoa.Falescimento = Convert.ToBoolean(Convert.ToString(dtrow["Falescimento"]));
+                pessoa.Cpf = Convert.ToString(dtrow["Cpf"]);
                 pessoa.Sexo_feminino = Convert.ToBoolean(Convert.ToString(dtrow["Sexo_feminino"]));
                 pessoa.Sexo_masculino = Convert.ToBoolean(Convert.ToString(dtrow["Sexo_masculino"]));
                 pessoa.Rg = Convert.ToString(dtrow["Rg"]);
                 pessoa.Data_nascimento = Convert.ToDateTime(Convert.ToString(dtrow["Data_nascimento"]));
-                pessoa.Endereco.Cep = long.Parse(Convert.ToString(dtrow["Cep"]));
+                pessoa.Telefone = new Telefone();              
                 pessoa.Telefone.Fone = Convert.ToString(dtrow["Fone"]);
                 pessoa.Telefone.Celular = Convert.ToString(dtrow["Celular"]);
                 pessoa.Telefone.Whatsapp = Convert.ToString(dtrow["Whatsapp"]);
-                pessoa.Cpf = Convert.ToString(dtrow["Cpf"]);
-                pessoa.Status = Convert.ToString(dtrow["Status"]);
+                pessoa.Endereco = new Endereco();               
+                pessoa.Endereco.Cep = long.Parse(Convert.ToString(dtrow["Cep"]));
                 pessoa.Endereco.Pais = Convert.ToString(dtrow["Pais"]);
                 pessoa.Endereco.Estado = Convert.ToString(dtrow["Estado"]);
                 pessoa.Endereco.Cidade = Convert.ToString(dtrow["Cidade"]);
                 pessoa.Endereco.Bairro = Convert.ToString(dtrow["Bairro"]);
                 pessoa.Endereco.Rua = Convert.ToString(dtrow["Rua"]);
                 pessoa.Endereco.Complemento = Convert.ToString(dtrow["Complemento"]);
-                pessoa.Endereco.Numero_casa = int.Parse(Convert.ToString(dtrow["Numero"]));
-                pessoa.Email = Convert.ToString(dtrow["Email"]);
-                pessoa.Estado_civil = Convert.ToString(dtrow["Estado_civil"]);
-                pessoa.Falescimento = Convert.ToBoolean(Convert.ToString(dtrow["Falescimento"]));
+                pessoa.Endereco.Numero_casa = int.Parse(Convert.ToString(dtrow["Numero_casa"]));
+                
                 lista.Add(pessoa);
             }
 
             return lista;
-        }
-
-        public int buscarmaximo()
-        {
-          select_padrao = "select * from celula" +        
-          " where id_celula='@id'";
-            Select = select_padrao.Replace("@id", this.Cel_nome.ToString());
-
-            DataTable datatable = bd.lista(Select);
-
-            foreach (DataRow dtrow in datatable.Rows)
-            {
-                Maximo_pessoa = int.Parse(dtrow["max_pessoa"].ToString());
-            }
-
-            return Maximo_pessoa;
-        }                
-
-        public Cargo_Lider info_lider()
-        {
-            select_padrao = "select * from Pessoa as P inner join Endereco as E on E.Id=Endereco_Id inner join Telefone as T on T.Id=Telefone_Id @innerjoin where  P.Pessoa_id='" + this.Cel_nome + "'";
-
-            Select = select_padrao.Replace("@id", Cel_nome.ToString());
-            Select = Select.Replace("@innerjoin", " inner join Celula on celula_=Id");
-
-            SqlCommand comando = new SqlCommand(Select, bd.obterconexao());
-
-            SqlDataReader dr = comando.ExecuteReader();
-
-            var lider = new Cargo_Lider();
-            //lider.Id = int.Parse(Convert.ToString(dr["Pessoa_id"]));
-            //lider.Nome = Convert.ToString(dr["Nome"]);
-            //lider.Sexo_feminino = Convert.ToBoolean(Convert.ToString(dr["Sexo_feminino"]));
-            //lider.Sexo_masculino = Convert.ToBoolean(Convert.ToString(dr["Sexo_masculino"]));
-            //lider.Rg = Convert.ToString(dr["Rg"]);
-            //lider.Data_nascimento = Convert.ToDateTime(Convert.ToString(dr["Data_nascimento"]));
-            //lider.Endereco.Cep = long.Parse(Convert.ToString(dr["Cep"]));
-            //lider.Telefone.Fone = Convert.ToString(dr["Fone"]);
-            //lider.Telefone.Celular = Convert.ToString(dr["Celular"]);
-            //lider.Telefone.Whatsapp = Convert.ToString(dr["Whatsapp"]);
-            //lider.Cpf = Convert.ToString(dr["Cpf"]);
-            //lider.Status = Convert.ToString(dr["Status"]);
-            //lider.Endereco.Pais = Convert.ToString(dr["Pais"]);
-            //lider.Endereco.Estado = Convert.ToString(dr["Estado"]);
-            //lider.Endereco.Cidade = Convert.ToString(dr["Cidade"]);
-            //lider.Endereco.Bairro = Convert.ToString(dr["Bairro"]);
-            //lider.Endereco.Rua = Convert.ToString(dr["Rua"]);
-            //lider.Endereco.Complemento = Convert.ToString(dr["Complemento"]);
-            //lider.Endereco.Numero_casa = int.Parse(Convert.ToString(dr["Numero"]));
-            //lider.Email = Convert.ToString(dr["Email"]);
-            //lider.Estado_civil = Convert.ToString(dr["Estado_civil"]);
-            //lider.Falescimento = Convert.ToBoolean(Convert.ToString(dr["Falescimento"]));
-            return lider;
-        }
+        }        
 
         public override IEnumerable<Celula> recuperartodos()
         {
-            throw new NotImplementedException();
+            select_padrao = "select * from Celula order by Celulaid asc";
+
+            SqlCommand comando = new SqlCommand(select_padrao, bd.obterconexao());
+
+            SqlDataReader dr = comando.ExecuteReader();
+
+            List<Celula> lista = new List<Celula>();
+
+            while (dr.Read())
+            {
+                Celula cl = new Celula();
+                cl.Celulaid = int.Parse(Convert.ToString(dr["Celulaid"]));
+                cl.cel_nome = Convert.ToString(dr["Cel_nome"]);
+                cl.Lider_ = int.Parse(dr["Lider_"].ToString());
+                cl.Lidertreinamento_ = int.Parse(dr["Lidertreinamento_"].ToString());
+                cl.Supervisor_ = int.Parse(dr["Supervisor_"].ToString());
+                cl.Supervisortreinamento_ = int.Parse(dr["Supervisortreianamento_"].ToString());
+                cl.Dia_semana = Convert.ToString(dr["Dia_semana"]);
+                cl.Endereco_Celula.Cel_bairro = Convert.ToString(dr["Cel_bairro"]);
+                cl.Endereco_Celula.Cel_numero = int.Parse(Convert.ToString(dr["Cel_numero"]));
+                cl.Endereco_Celula.Cel_rua = Convert.ToString(dr["Cel_rua"]);
+                cl.Horario = (TimeSpan)((dr["Horario"]));
+                cl.Maximo_pessoa = int.Parse(Convert.ToString(dr["Maximo_pessoa"]));
+                cl.pessoas = cl.preenchercelula(cl.Celulaid);
+                lista.Add(cl);
+            }
+
+            return lista;
         }
     }
 }

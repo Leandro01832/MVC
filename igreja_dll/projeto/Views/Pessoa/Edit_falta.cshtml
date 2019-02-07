@@ -1,0 +1,48 @@
+﻿@model business.classes.Pessoa
+
+@{
+    ViewBag.Title = "Edit_falta";
+}
+
+<h2>Edit_falta</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Adicionar falta</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Nome)
+        @Html.HiddenFor(model => model.Data_nascimento)
+        @Html.HiddenFor(model => model.Rg)
+        @Html.HiddenFor(model => model.Cpf)
+        @Html.HiddenFor(model => model.Estado_civil)
+        @Html.HiddenFor(model => model.Sexo_masculino)
+        @Html.HiddenFor(model => model.Sexo_feminino)
+        @Html.HiddenFor(model => model.Falescimento)
+        @Html.HiddenFor(model => model.Status)
+        @Html.HiddenFor(model => model.Email)
+        @Html.HiddenFor(model => model.Falta)
+        @Html.HiddenFor(model => model.celula_)
+        @Html.HiddenFor(model => model.Img)
+        @Html.HiddenFor(model => model.imgtipo)
+        @Html.HiddenFor(model => model.classe)
+        @Html.HiddenFor(model => model.Endereco)
+        @Html.HiddenFor(model => model.Telefone)
+
+        <label>Deseja realmente adicionar falta a esta pessoa?</label>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Sim, adicionar falta" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

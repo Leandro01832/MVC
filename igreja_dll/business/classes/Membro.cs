@@ -44,9 +44,12 @@ namespace business.classes
             {
                 desligamento = value;
             }
-        }                
+        }
 
-       // public int id_pessoa { get; set; }
+        public string Motivo_desligamento { get; set; }
+        
+
+        // public int id_pessoa { get; set; }
 
         //[ForeignKey("id_pessoa")]
         //public virtual Pessoa pessoa { get; set; }
@@ -63,33 +66,27 @@ namespace business.classes
         public Membro(int id)
         {
             bd = new BDcomum();
-            recuperar(id);
+            this.Nome = recuperar_membro(id).Nome;
+            this.Endereco = recuperar_membro(id).Endereco;
+            this.Telefone = recuperar_membro(id).Telefone;
         }
 
-        public override string alterar()
+        public override string alterar(int id)
         {
-             base.alterar();
+             base.alterar(id);
 
             update_padrao = "update Membro set Desligamento = '@desligamento', Data_batismo = '@ano_batismo' " +
                     " from Membro as M inner join Pessoa as P on P.Pessoa_id=id_pessoa where P.Pessoa_id='@id' ";
-            Update = update_padrao.Replace("@id", this.Id.ToString());
+            Update = update_padrao.Replace("@id", id.ToString());
             Update = Update.Replace("@desligamento", desligamento.ToString());
             Update = Update.Replace("@ano_batismo", data_batismo.ToString());
 
             return bd.montar_sql(Update, null, null);
         }
 
-        public override string excluir()
+        public override string excluir(int id)
         {
-            delete_padrao =
-                " delete Membro from Membro as M inner " +
-                " join Pessoa as P on P.Pessoa_id=id_pessoa" +
-                " where P.Pessoa_id='@id' ";
-            Delete = delete_padrao.Replace("@id", this.Id.ToString());
-
-            bd.montar_sql(Delete, null, null);
-            base.excluir();
-            return "";
+            return base.excluir(id);
         }
 
         public override Pessoa recuperar(int id)
@@ -100,14 +97,11 @@ namespace business.classes
         public  Membro recuperar_membro(int id)
         {
            Pessoa p = recuperar(id);
-            select_padrao = "select * from pessoa inner join endereco on pes_id=end_pessoa " +
-            " inner join telefone on pes_id=tel_pessoa @innerjoin where Id='" + id + "'";
+            select_padrao = " select * from Pessoa as P inner join Endereco as E on P.Id=E.EnderecoId inner join Telefone as T on P.Id=T.telefoneid "
+            + " inner join Membro as M on P.Id=M.Id "
+            + " where P.Id='" + id + "'";
 
-            Select = select_padrao.Replace("@nome", this.Nome);
-            Select = Select.Replace("@cpf", this.Cpf);
-            Select = Select.Replace("@innerjoin", " inner join membro on pes_id=memb_pessoa ");
-
-            SqlCommand comando = new SqlCommand(Select, bd.obterconexao());
+            SqlCommand comando = new SqlCommand(select_padrao, bd.obterconexao());
 
             SqlDataReader dr = comando.ExecuteReader();
 
@@ -144,6 +138,7 @@ namespace business.classes
                     this.Celula = p.Celula;
                     this.Chamada = p.Chamada;
                     this.Reuniao = p.Reuniao;
+                    this.Img = p.Img;
                     this.Desligamento = Convert.ToBoolean(Convert.ToString(dr["Desligamento"]));
                     this.Data_batismo = int.Parse(Convert.ToString(dr["Data_batismo"]));
 
@@ -169,7 +164,7 @@ namespace business.classes
         {
              base.salvar();
 
-            insert_padrao = "insert into membro (Desligamento, Data_batismo, id_pessoa) values('@desligamento', '@ano_batismo', IDENT_CURRENT('Pessoa'))";
+            insert_padrao = "insert into Membro (Desligamento, Data_batismo, Id) values('@desligamento', '@ano_batismo', IDENT_CURRENT('Pessoa'))";
                
 
             Insert = insert_padrao.Replace("@desligamento", false.ToString() );

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<business.classes.Pessoa>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Celula.Cel_nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Chamada.chamadaid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco.Pais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone.Fone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_nascimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado_civil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo_masculino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo_feminino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Img)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Celula.Cel_nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chamada.chamadaid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco.Pais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone.Fone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_nascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cpf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado_civil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo_masculino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo_feminino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Img)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

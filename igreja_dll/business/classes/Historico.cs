@@ -70,12 +70,12 @@ namespace business.classes
             bd = new BDcomum();
         }
 
-        public override string alterar()
+        public override string alterar(int id)
         {
             throw new NotImplementedException();
         }
 
-        public override string excluir()
+        public override string excluir(int id)
         {
             throw new NotImplementedException();
         }
@@ -86,13 +86,8 @@ namespace business.classes
         }
 
         public override string salvar()
-        {
-            
-            insert_padrao = "insert into historico (Data_inicio, Data_fim, Falta, IDENT_CURRENT('Pessoa'))" +
-            " values (@data_inicio, @data_fim, @falta)";
-            Insert = insert_padrao.Replace("@data_inicio", Data_inicio.ToString());           
-            Insert = Insert.Replace("@falta", falta.ToString());
-            return bd.montar_sql(Insert, null, null);
+        {            
+            return "";
         }     
 
         public override IEnumerable<Historico> recuperartodos()

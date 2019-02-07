@@ -1,18 +1,14 @@
 ﻿using database.banco;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlClient;
 
 namespace business.classes
 {
     [Table("Supervisor")]    
-    public  class Cargo_Supervisor
+    public  class Cargo_Supervisor : modelocrud<Cargo_Supervisor>
     {
         
         
@@ -66,87 +62,93 @@ namespace business.classes
            // recuperar(id);
         }
 
-        //public override string alterar()
-        //{
-        //    return base.alterar();
-        //}
+        public override string alterar(int id)
+        {
+            update_padrao = "update  Supervisor set Maximo_celula='@maximo' where Supervisorid='@id' ";
+            Update = update_padrao.Replace("@id", id.ToString());
+            Update = Update.Replace("@maximo", this.maximo_celula.ToString());
+            return bd.montar_sql(Update, null, null);
+        }
 
-        //public override string excluir()
-        //{
-        //    return base.excluir();
-        //}
+        public override string excluir(int id)
+        {
+            delete_padrao = "delete from Supervisor where Supervisorid = '@id'";
+            Delete = delete_padrao.Replace("@id", id.ToString());
+            return bd.montar_sql(Delete, null, null);            
+        }
 
-        //public override bool recuperar(int id)
-        //{
-        //    return base.recuperar(id);
-        //}
+        public override Cargo_Supervisor recuperar(int id)
+        {
+            return null;
+        }
 
-        //public override string salvar()
-        //{
-        //    celulas = preenchersupervisor();
-        //    Maximo_celula = buscarmaximo();
+        public Pessoa recuperar_pessoa_supervisor(int id)
+        {
+            Pessoa p = this.Pessoa.recuperar(id);
+            return p;
+        }
 
-        //    if (Maximo_celula == 0)
-        //    {
-        //        Maximo_celula = 50;
-        //    }
+        public override string salvar()
+        {
+           return "";
+        }
 
-        //    if (celulas.Count > Maximo_celula)
-        //    {
-        //        MessageBox.Show("você já tem duas celulas para supervisão. Por favor converse com a autoridade para modificar as configurações de supervisionamento.");
-        //        return "";
-        //    }
-        //    else
-        //    {
-        //        base.salvar();
-        //        insert_padrao = "insert into supervisor " +
-        //       " (id_pessoa, Maximo_celula) values (IDENT_CURRENT('Pessoa'), '@maximo')";                
-        //        Insert = insert_padrao.Replace("@maximo", Maximo_celula.ToString());
-        //        return bd.montar_sql(Insert, null, null);
-        //    }
-           
-        //}
+        public List<Celula> preenchersupervisor( int id)
+        {
+            select_padrao = "select * from celula inner join supervisor_celula" +
+                " on id_celula=super_celula" +
+                " where cel_supervisor='@id'";
+            Select = select_padrao.Replace("@id", id.ToString());
 
-        //public List<Celula> preenchersupervisor()
-        //{
-        //    select_padrao = "select * from celula inner join supervisor_celula" +
-        //        " on id_celula=super_celula" +
-        //        " where cel_supervisor='@id'";
-        //    Select = select_padrao.Replace("@id", this.Id.ToString());
+            DataTable datatable = bd.lista(Select);
 
-        //    DataTable datatable = bd.lista(Select);
+            List<Celula> lista = new List<Celula>();
+            foreach (DataRow dtrow in datatable.Rows)
+            {
+                var pessoa = new Celula();
+                pessoa.Cel_nome = dtrow["cel_nome"].ToString();
+                int i = int.Parse(dtrow["id_celula"].ToString());
+                lista.Add(pessoa);
+            }
 
-        //    List<Celula> lista = new List<Celula>();
-        //    foreach (DataRow dtrow in datatable.Rows)
-        //    {
-        //        var pessoa = new Celula();
-        //        pessoa.Cel_nome = dtrow["cel_nome"].ToString();
-        //        int i = int.Parse(dtrow["id_celula"].ToString());
-        //        lista.Add(pessoa);
-        //    }
+            return lista;
+        }
 
-        //    return lista;
-        //}
+        public int buscarmaximo(int id)
+        {
+            select_padrao = "select * from supervisor" +
+               " where id_supervisor='@id'";
+            Select = select_padrao.Replace("@id", id.ToString());
 
-        //public int buscarmaximo()
-        //{
-        //    select_padrao = "select * from supervisor" +
-        //       " where id_supervisor='@id'";
-        //    Select = select_padrao.Replace("@id", this.Id.ToString());
+            DataTable datatable = bd.lista(Select);
 
-        //    DataTable datatable = bd.lista(Select);
+            foreach (DataRow dtrow in datatable.Rows)
+            {
+                Maximo_celula = int.Parse(dtrow["maximo_celula"].ToString());
+            }
 
-        //    foreach (DataRow dtrow in datatable.Rows)
-        //    {
-        //        Maximo_celula = int.Parse(dtrow["maximo_celula"].ToString());
-        //    }
+            return Maximo_celula;
+        }
 
-        //    return Maximo_celula;
-        //}
+        public override IEnumerable<Cargo_Supervisor> recuperartodos()
+        {
+            select_padrao = "select * from Supervisor";
 
-        //public override IEnumerable<Pessoa> recuperartodos()
-        //{
-        //    return base.recuperartodos();
-        //}
+            SqlCommand comando = new SqlCommand(Select, bd.obterconexao());
+
+            SqlDataReader dr = comando.ExecuteReader();
+
+            List<Cargo_Supervisor> lista = new List<Cargo_Supervisor>();
+
+            while (dr.Read())
+            {
+                Cargo_Supervisor cs = new Cargo_Supervisor();
+                cs.Supervisorid = int.Parse(dr["Supervisorid"].ToString());
+                cs.Maximo_celula = int.Parse(dr["Maximo_celula"].ToString());
+                lista.Add(cs);
+            }
+
+            return lista;
+        }
     }
 }

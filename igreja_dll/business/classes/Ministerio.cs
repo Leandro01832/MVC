@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlClient;
 
 namespace business.classes
 {
     [Table("Ministerio")]    
     public class Ministerio : modelocrud<Ministerio>
-    {
-        
+    {        
         private int id;
         private string nome;        
         private Cargo_Lider lider;
@@ -118,62 +118,83 @@ namespace business.classes
             bd = new BDcomum();
         }
 
-        public override string alterar()
+        public override string alterar(int id)
         {
-            update_padrao = "update ministerio set minis_nome='@nome',"
-              + " minis_lider='@lider', minis_proposito='@proposito'"
-              + " where id_ministerio=@id";
+            update_padrao = "update Ministerio set Nome='@nome',"
+              + " lider_ministerio='@lider', Proposito='@proposito'"
+              + " where ministerioid='@id'";
 
             Update = update_padrao.Replace("@nome", nome);
-            
+            Update = Update.Replace("@lider", lider_ministerio.ToString());
             Update = Update.Replace("@proposito", proprosito);
             Update = Update.Replace("@id", id.ToString());
 
             return bd.montar_sql(Update, null, null);
         }
 
-        public override string excluir()
+        public override string excluir(int id)
         {
-            throw new NotImplementedException();
+            delete_padrao = "delete from Ministerio where ministerioid='@id'";
+            Delete = delete_padrao.Replace("@id", id.ToString());
+
+            return bd.montar_sql(Delete, null, null);
         }
 
         public override Ministerio recuperar(int id)
         {
-            throw new NotImplementedException();
-        }
+            select_padrao = "select * from Ministerio where ministerioid='@id'";
+            Select = select_padrao.Replace("@id", id.ToString());
+            SqlCommand comando = new SqlCommand(Select, bd.obterconexao());
 
-        public override string salvar()
-        {
-            Pessoas = preencherministerio(this.ministerioid);
-            Maximo_pessoa = buscarmaximo();
+            SqlDataReader dr = comando.ExecuteReader();
 
-            if (Maximo_pessoa == 0)
+            if (dr.HasRows == false)
             {
-                Maximo_pessoa = 60;
-            }
-
-            if (pessoas.Count > Maximo_pessoa) {
-                MessageBox.Show("existem muitas pessoas no ministerio. Por favor converse com o lider deste ministerio.");
-                return "";
+                return null;
             }
             else
             {
-               // Lider.salvar();
-                insert_padrao = "insert into ministerio (Nome,  Proposito, Maximo_pessoa, Lider_id) values " +
-                " ('@nome', '@proposito', '@maximo', IDENT_CURRENT('Lider'))";
+                try
+                {
+                    dr.Read();
+                    this.Nome = dr["Nome"].ToString();
+                    this.Proposito = dr["Proposito"].ToString();
+                    this.ministerioid = int.Parse(dr["ministerioid"].ToString());
+                    this.lider_ministerio = int.Parse(dr["lider_ministerio"].ToString());
+                    dr.Close();
+                }
 
-                Insert = insert_padrao.Replace("@nome", nome);               
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
+                finally
+                {
+                    bd.obterconexao().Close();
+                }
+
+                return this;
+            }
+        }
+
+        public override string salvar()
+        {          
+                insert_padrao = "insert into Ministerio (Nome,  Proposito, Maximo_pessoa, lider_ministerio) values " +
+                " ('@nome', '@proposito', '@maximo', '@lider')";
+
+                Insert = insert_padrao.Replace("@nome", nome);
+                Insert = insert_padrao.Replace("@lider", lider_ministerio.ToString());
                 Insert = Insert.Replace("@proposito", proprosito);
                 Insert = Insert.Replace("@maximo", Maximo_pessoa.ToString());
-                return bd.montar_sql(Insert, null, null);
-            }            
+                return bd.montar_sql(Insert, null, null);                      
         }
 
         public List<Pessoa> preencherministerio(int ID)
         {
-            select_padrao = "select * from pessoa inner join ministerio_pessoa" +
-                " on pes_id=minis_pessoa inner join ministerio" +
-                " on id_ministerio=pes_ministerio where id_ministerio='@id'";
+            select_padrao = "select * from Pessoa as P inner join MinisterioPessoa as MP" +
+                " on P.Id=MP.Pessoa_Id " +
+                "  where Ministerio_ministerioid='@id'";
             Select = select_padrao.Replace("@id", id.ToString());
 
             DataTable datatable = bd.lista(Select);
@@ -181,35 +202,91 @@ namespace business.classes
             List<Pessoa> lista = new List<Pessoa>();
             foreach (DataRow dtrow in datatable.Rows)
             {
-                var pessoa = new business.classes.Pessoa();
-                pessoa.Nome = dtrow["pes_nome"].ToString();
-                pessoa.Id = int.Parse(dtrow["pes_id"].ToString());
+                var pessoa = new Pessoa();
+                pessoa.Id = int.Parse(Convert.ToString(dtrow["Pessoa_id"]));
+                pessoa.Nome = Convert.ToString(dtrow["Nome"]);
+                pessoa.Email = Convert.ToString(dtrow["Email"]);
+                pessoa.Falta = int.Parse(dtrow["Falta"].ToString());
+                pessoa.Estado_civil = Convert.ToString(dtrow["Estado_civil"]);
+                pessoa.Falescimento = Convert.ToBoolean(Convert.ToString(dtrow["Falescimento"]));
+                pessoa.Sexo_feminino = Convert.ToBoolean(Convert.ToString(dtrow["Sexo_feminino"]));
+                pessoa.Sexo_masculino = Convert.ToBoolean(Convert.ToString(dtrow["Sexo_masculino"]));
+                pessoa.Rg = Convert.ToString(dtrow["Rg"]);
+                pessoa.Data_nascimento = Convert.ToDateTime(Convert.ToString(dtrow["Data_nascimento"]));
+                pessoa.Cpf = Convert.ToString(dtrow["Cpf"]);
+                pessoa.Status = Convert.ToString(dtrow["Status"]);
+                pessoa.Telefone.Fone = Convert.ToString(dtrow["Fone"]);
+                pessoa.Telefone.Celular = Convert.ToString(dtrow["Celular"]);
+                pessoa.Telefone.Whatsapp = Convert.ToString(dtrow["Whatsapp"]);
+                pessoa.Endereco.Cep = long.Parse(Convert.ToString(dtrow["Cep"]));
+                pessoa.Endereco.Pais = Convert.ToString(dtrow["Pais"]);
+                pessoa.Endereco.Estado = Convert.ToString(dtrow["Estado"]);
+                pessoa.Endereco.Cidade = Convert.ToString(dtrow["Cidade"]);
+                pessoa.Endereco.Bairro = Convert.ToString(dtrow["Bairro"]);
+                pessoa.Endereco.Rua = Convert.ToString(dtrow["Rua"]);
+                pessoa.Endereco.Complemento = Convert.ToString(dtrow["Complemento"]);
+                pessoa.Endereco.Numero_casa = int.Parse(Convert.ToString(dtrow["Numero"]));
+                pessoa.Chamada.Data_inicio = Convert.ToDateTime(dtrow["Data_inicio"]);
+                pessoa.Chamada.Numero_chamada = int.Parse(dtrow["Numero_chamada"].ToString());
+                pessoa.Celula.Celulaid = int.Parse(dtrow["celulaid"].ToString());
+                pessoa.Celula.Supervisor_ = int.Parse(dtrow["Supervisor"].ToString());
+                pessoa.Celula.Supervisortreinamento_ = int.Parse(dtrow["Supervisortreinamento_"].ToString());
+                pessoa.Celula.Lider_ = int.Parse(dtrow["Lider_"].ToString());
+                pessoa.Celula.Lidertreinamento_ = int.Parse(dtrow["Lidertreinamento_"].ToString());
+                pessoa.Celula.Pessoas = pessoa.Celula.preenchercelula(pessoa.Celula.Celulaid);
+                pessoa.Celula.Maximo_pessoa = int.Parse(dtrow["Maximo_pessoa"].ToString());
+                pessoa.Celula.Horario = TimeSpan.Parse(dtrow["Horario"].ToString());
+                pessoa.Celula.Cel_nome = dtrow["Cel_nome"].ToString();
+
+                    Historico h = new Historico();
+                    h.Data_inicio = Convert.ToDateTime(dtrow["Data_inicio"]);
+                    h.Falta = int.Parse(dtrow["Falta"].ToString());
+                    pessoa.Historico.Add(h);
+
+                    Ministerio m = new Ministerio();
+                    m.ministerioid = int.Parse(dtrow["ministerioid"].ToString());
+                    m.Nome = dtrow["Nome"].ToString();
+                    m.lider_ministerio = int.Parse(dtrow["Lider_ministerio"].ToString());
+                    m.Proposito = dtrow["proposito"].ToString();
+                    m.Pessoas = m.preencherministerio(m.ministerioid);
+                    pessoa.Ministerios.Add(m);
+
+                    Reuniao r = new Reuniao();
+                    r.Data_reuniao = Convert.ToDateTime(dtrow["Data_reuniao"]);
+                    r.Horario_inicio = Convert.ToDateTime(dtrow["Horario_inicio"]);
+                    r.Horario_fim = Convert.ToDateTime(dtrow["Horario_fim"]);
+                    r.Local_reuniao = dtrow["Local_reuniao"].ToString();
+                    pessoa.Reuniao.Add(r);
+                
                 lista.Add(pessoa);
             }
 
             return lista;
         }
 
-        public int buscarmaximo()
-        {
-            select_padrao = "select * from ministerio" +               
-               " where id_ministerio='@id'";
-            Select = select_padrao.Replace("@id", id.ToString());
-
-            DataTable datatable = bd.lista(Select);
-
-
-            foreach (DataRow dtrow in datatable.Rows)
-            {
-                Maximo_pessoa = int.Parse(dtrow["max_pessoa"].ToString());
-            }
-
-            return Maximo_pessoa;
-        }
-
         public override IEnumerable<Ministerio> recuperartodos()
         {
-            throw new NotImplementedException();
+            select_padrao = "select * from Celula";
+
+            SqlCommand comando = new SqlCommand(select_padrao, bd.obterconexao());
+
+            SqlDataReader dr = comando.ExecuteReader();
+
+            List<Ministerio> lista = new List<Ministerio>();
+
+            while (dr.Read())
+            {
+                Ministerio cl = new Ministerio();
+
+                cl.Nome = dr["Nome"].ToString();
+                cl.Proposito = dr["Proposito"].ToString();
+                cl.ministerioid = int.Parse(dr["ministerioid"].ToString());
+                cl.lider_ministerio = int.Parse(dr["lider_ministerio"].ToString());
+                cl.pessoas = cl.preencherministerio(cl.ministerioid);
+                lista.Add(cl);
+            }
+
+            return lista;
         }
     }
 }

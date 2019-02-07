@@ -1,0 +1,62 @@
+﻿@model business.classes.Pessoa
+
+@{
+    ViewBag.Title = "Edit_falescimento";
+}
+
+<h2>Edit_falescimento</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Editar falescimento</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Nome)
+        @Html.HiddenFor(model => model.Data_nascimento)
+        @Html.HiddenFor(model => model.Rg)
+        @Html.HiddenFor(model => model.Cpf)
+        @Html.HiddenFor(model => model.Estado_civil)
+        @Html.HiddenFor(model => model.Sexo_masculino)
+        @Html.HiddenFor(model => model.Sexo_feminino)
+        @Html.HiddenFor(model => model.Falescimento)
+        @Html.HiddenFor(model => model.Status)
+        @Html.HiddenFor(model => model.Email)
+        @Html.HiddenFor(model => model.Falta)
+        @Html.HiddenFor(model => model.celula_)
+        @Html.HiddenFor(model => model.Img)
+        @Html.HiddenFor(model => model.imgtipo)
+        @Html.HiddenFor(model => model.classe)       
+        @Html.HiddenFor(model => model.Endereco)
+        @Html.HiddenFor(model => model.Telefone)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Falescimento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.Falescimento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Falescimento, "", new { @class = "text-danger" })
+            </div>
+        </div>  
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Editar falescimento" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

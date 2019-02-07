@@ -95,12 +95,12 @@ namespace business.classes
             bd = new BDcomum();
         }
 
-        public override string alterar()
+        public override string alterar(int id)
         {
             throw new NotImplementedException();
         }
 
-        public override string excluir()
+        public override string excluir(int id)
         {
             throw new NotImplementedException();
         }
@@ -112,8 +112,8 @@ namespace business.classes
 
         public override string salvar()
         {
-            insert_padrao = 
-             "insert into endereco_celula (Cel_bairro, Cel_rua, Cel_numero) values ('@bairro', '@rua', '@numero')";
+            insert_padrao =
+             "insert into Endereco_celula (Cel_bairro, Cel_rua, Cel_numero, enderecoid) values ('@bairro', '@rua', '@numero', IDENT_CURRENT('Pessoa'))";
                         
             Insert = insert_padrao.Replace("@bairro", Cel_bairro);
             Insert = Insert.Replace("@rua", Cel_rua);

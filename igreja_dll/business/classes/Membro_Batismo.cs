@@ -98,14 +98,14 @@ namespace business.classes
             recuperar(id);
         }
 
-        public override string alterar()
+        public override string alterar(int id)
         {
-            return base.alterar();
+            return  bd.montar_sql(base.alterar(id), null, null);
         }
 
-        public override string excluir()
+        public override string excluir(int id)
         {
-            return base.excluir();
+            return base.excluir(id);
         }
 
         public override Pessoa recuperar(int id)
@@ -116,10 +116,11 @@ namespace business.classes
         public Membro_Batismo recuperar_membro_batismo(int id)
         {
             Pessoa p = recuperar(id);
-            select_padrao = "select * from pessoa inner join endereco on pes_id=end_pessoa inner join telefone on pes_id=tel_pessoa @innerjoin where Pessoa_id='" + id + "'";
-            Select = Select.Replace("@innerjoin", " inner join membro on pes_id=memb_pessoa inner join membro_aclamacao on id_membro=acla_membro ");
+            select_padrao = " select * from Pessoa as P inner join Endereco as E on P.Id=E.EnderecoId inner join Telefone as T on E.Id=T.telefoneid " 
+            +" inner join Membro as M on P.Id=M.Id inner join Membro_batismo as MB on M.Id=MB.Id " 
+            + " where P.Id='" + id + "'";
 
-            SqlCommand comando = new SqlCommand(Select, bd.obterconexao());
+            SqlCommand comando = new SqlCommand(select_padrao, bd.obterconexao());
 
             SqlDataReader dr = comando.ExecuteReader();
 
@@ -181,7 +182,7 @@ namespace business.classes
         {
              base.salvar();
 
-            insert_padrao = "insert into membro_batismo (id_membro) values (IDENT_CURRENT('Membro'))";          
+            insert_padrao = "insert into Membro_batismo (Id) values (IDENT_CURRENT('Pessoa'))";          
 
             return bd.montar_sql(insert_padrao, null, null);
         }

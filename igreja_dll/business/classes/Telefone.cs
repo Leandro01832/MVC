@@ -84,12 +84,12 @@ namespace business.classes
             bd = new BDcomum();
         }
 
-        public override string alterar()
+        public override string alterar(int id)
         {
             throw new NotImplementedException();            
         }
 
-        public override string excluir()
+        public override string excluir(int id)
         {
             throw new NotImplementedException();
         }
@@ -102,7 +102,7 @@ namespace business.classes
         public override string salvar()
         {
             insert_padrao =
-        "insert into telefone (Fone, Celular, Whatsapp, telefoneid) values ('@telefone', '@celular', '@whatsapp', IDENT_CURRENT('Pessoa') ) ";           
+        "insert into telefone (Fone, Celular, Whatsapp, telefoneid) values ('@telefone', '@celular', '@whatsapp', IDENT_CURRENT('Pessoa')) ";           
            
             Insert = insert_padrao.Replace("@telefone", Fone);
             Insert = Insert.Replace("@celular", Celular);

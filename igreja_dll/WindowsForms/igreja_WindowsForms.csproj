@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1F7ECF4B-DC6E-45E2-BEAB-E168ADE1EAE6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>igreja_WindowsForms</RootNamespace>
+    <AssemblyName>igreja_WindowsForms</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\atualização\atualizacao_celula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\atualização\atualizacao_celula.Designer.cs">
+      <DependentUpon>atualizacao_celula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\atualização\Atualizacao_crianca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\atualização\Atualizacao_crianca.Designer.cs">
+      <DependentUpon>Atualizacao_crianca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\atualização\Atualizacao_membro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\atualização\Atualizacao_membro.Designer.cs">
+      <DependentUpon>Atualizacao_membro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\atualização\Atualizacao_ministerio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\atualização\Atualizacao_ministerio.Designer.cs">
+      <DependentUpon>Atualizacao_ministerio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\atualização\Atualizacao_visitante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\atualização\Atualizacao_visitante.Designer.cs">
+      <DependentUpon>Atualizacao_visitante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\atualização\Atualizar_membro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\atualização\Atualizar_membro.Designer.cs">
+      <DependentUpon>Atualizar_membro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\cadastro\Form_cadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\cadastro\Form_cadastro.Designer.cs">
+      <DependentUpon>Form_cadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\cadastro\Form_celula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\cadastro\Form_celula.Designer.cs">
+      <DependentUpon>Form_celula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\cadastro\Form_crianca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\cadastro\Form_crianca.Designer.cs">
+      <DependentUpon>Form_crianca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\cadastro\Form_ministerio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\cadastro\Form_ministerio.Designer.cs">
+      <DependentUpon>Form_ministerio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\cadastro\Form_supervisor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\cadastro\Form_supervisor.Designer.cs">
+      <DependentUpon>Form_supervisor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\cadastro\Form_visitante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\cadastro\Form_visitante.Designer.cs">
+      <DependentUpon>Form_visitante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\cadastro\info_membro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\cadastro\info_membro.Designer.cs">
+      <DependentUpon>info_membro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\configuracao\Config.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\configuracao\Config.Designer.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\configuracao\Config_celula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\configuracao\Config_celula.Designer.cs">
+      <DependentUpon>Config_celula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\configuracao\Config_layout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\configuracao\Config_layout.Designer.cs">
+      <DependentUpon>Config_layout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\configuracao\Config_ministerio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\configuracao\Config_ministerio.Designer.cs">
+      <DependentUpon>Config_ministerio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\configuracao\Config_supervisor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\configuracao\Config_supervisor.Designer.cs">
+      <DependentUpon>Config_supervisor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\configuracao\Conf_supervisor_treinamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\configuracao\Conf_supervisor_treinamento.Designer.cs">
+      <DependentUpon>Conf_supervisor_treinamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\MDIParent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\MDIParent.Designer.cs">
+      <DependentUpon>MDIParent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\menu.Designer.cs">
+      <DependentUpon>menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\relatorio\rel_membro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\relatorio\rel_membro.Designer.cs">
+      <DependentUpon>rel_membro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\relatorio\rel_membro_aclamacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\relatorio\rel_membro_aclamacao.Designer.cs">
+      <DependentUpon>rel_membro_aclamacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\relatorio\rel_membro_batismo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\relatorio\rel_membro_batismo.Designer.cs">
+      <DependentUpon>rel_membro_batismo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\relatorio\rel_membro_reconciliacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\relatorio\rel_membro_reconciliacao.Designer.cs">
+      <DependentUpon>rel_membro_reconciliacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\relatorio\rel_membro_transferencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\relatorio\rel_membro_transferencia.Designer.cs">
+      <DependentUpon>rel_membro_transferencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\relatorio\rel_visitante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\relatorio\rel_visitante.Designer.cs">
+      <DependentUpon>rel_visitante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\teste\teste1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\teste\teste1.Designer.cs">
+      <DependentUpon>teste1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\visualizacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\visualizacao.Designer.cs">
+      <DependentUpon>visualizacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Visualizar foto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Visualizar foto.Designer.cs">
+      <DependentUpon>Visualizar foto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\Web.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\Web.Designer.cs">
+      <DependentUpon>Web.cs</DependentUpon>
+    </Compile>
+    <Compile Include="igreja2DataSet.Designer.cs" />
+    <Compile Include="MDIsingleton.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="form\atualização\atualizacao_celula.resx">
+      <DependentUpon>atualizacao_celula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\atualização\Atualizacao_crianca.resx">
+      <DependentUpon>Atualizacao_crianca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\atualização\Atualizacao_membro.resx">
+      <DependentUpon>Atualizacao_membro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\atualização\Atualizacao_ministerio.resx">
+      <DependentUpon>Atualizacao_ministerio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\atualização\Atualizacao_visitante.resx">
+      <DependentUpon>Atualizacao_visitante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\atualização\Atualizar_membro.resx">
+      <DependentUpon>Atualizar_membro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\cadastro\Form_cadastro.resx">
+      <DependentUpon>Form_cadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\cadastro\Form_celula.resx">
+      <DependentUpon>Form_celula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\cadastro\Form_crianca.resx">
+      <DependentUpon>Form_crianca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\cadastro\Form_ministerio.resx">
+      <DependentUpon>Form_ministerio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\cadastro\Form_supervisor.resx">
+      <DependentUpon>Form_supervisor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\cadastro\Form_visitante.resx">
+      <DependentUpon>Form_visitante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\cadastro\info_membro.resx">
+      <DependentUpon>info_membro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\configuracao\Config.resx">
+      <DependentUpon>Config.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\configuracao\Config_celula.resx">
+      <DependentUpon>Config_celula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\configuracao\Config_layout.resx">
+      <DependentUpon>Config_layout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\configuracao\Config_ministerio.resx">
+      <DependentUpon>Config_ministerio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\configuracao\Config_supervisor.resx">
+      <DependentUpon>Config_supervisor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\configuracao\Conf_supervisor_treinamento.resx">
+      <DependentUpon>Conf_supervisor_treinamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\MDIParent.resx">
+      <DependentUpon>MDIParent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\menu.resx">
+      <DependentUpon>menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\relatorio\rel_membro.resx">
+      <DependentUpon>rel_membro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\relatorio\rel_membro_aclamacao.resx">
+      <DependentUpon>rel_membro_aclamacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\relatorio\rel_membro_batismo.resx">
+      <DependentUpon>rel_membro_batismo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\relatorio\rel_membro_reconciliacao.resx">
+      <DependentUpon>rel_membro_reconciliacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\relatorio\rel_membro_transferencia.resx">
+      <DependentUpon>rel_membro_transferencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\relatorio\rel_visitante.resx">
+      <DependentUpon>rel_visitante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\teste\teste1.resx">
+      <DependentUpon>teste1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\visualizacao.resx">
+      <DependentUpon>visualizacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Visualizar foto.resx">
+      <DependentUpon>Visualizar foto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\Web.resx">
+      <DependentUpon>Web.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\igreja2.form.atualização.atualizacao_celula.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.atualização.Atualizacao_crianca.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.atualização.Atualizacao_membro.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.atualização.Atualizacao_ministerio.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.atualização.Atualizacao_visitante.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.atualização.Atualizar_membro.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.cadastro.Form_celula.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.cadastro.Form_crianca.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.cadastro.Form_ministerio.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.cadastro.Form_supervisor.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.cadastro.Form_visitante.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.cadastro.frm_cadastro.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.cadastro.info_membro.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.configuracao.Config.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.configuracao.Config_celula.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.configuracao.Config_layout.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.configuracao.Config_ministerio.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.configuracao.Config_supervisor.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.configuracao.Conf_supervisor_treinamento.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.MDIParent.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.menu.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.relatorio.rel_membro.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.relatorio.rel_membro_aclamacao.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.relatorio.rel_membro_batismo.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.relatorio.rel_membro_reconciliacao.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.relatorio.rel_membro_transferencia.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.relatorio.rel_visitante.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.teste.teste1.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.visualizacao.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.Visualizar_foto.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.form.Web.resources" />
+    <EmbeddedResource Include="obj\Debug\igreja2.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\Debug\View.Form1.resources" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="bin\Debug\igreja2.exe.config" />
+    <None Include="bin\Debug\igreja2.vshost.exe.config" />
+    <None Include="bin\Debug\igreja2.vshost.exe.manifest" />
+    <None Include="igreja2DataSet.xsc">
+      <DependentUpon>igreja2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="igreja2DataSet.xsd" />
+    <None Include="igreja2DataSet.xss">
+      <DependentUpon>igreja2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\igreja2.csproj.GenerateResource.Cache" />
+    <None Include="obj\Debug\igreja2.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Debug\RdlCompile.cache" />
+    <None Include="obj\Debug\RdlCompile.compiled" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\de\Microsoft.SqlServer.Types.resources.dll" />
+    <Content Include="bin\Debug\es\Microsoft.SqlServer.Types.resources.dll" />
+    <Content Include="bin\Debug\fr\Microsoft.SqlServer.Types.resources.dll" />
+    <Content Include="bin\Debug\igreja2.exe" />
+    <Content Include="bin\Debug\igreja2.pdb" />
+    <Content Include="bin\Debug\igreja2.vshost.exe" />
+    <Content Include="bin\Debug\it\Microsoft.SqlServer.Types.resources.dll" />
+    <Content Include="bin\Debug\ja\Microsoft.SqlServer.Types.resources.dll" />
+    <Content Include="bin\Debug\ko\Microsoft.SqlServer.Types.resources.dll" />
+    <Content Include="bin\Debug\Microsoft.ReportViewer.WinForms.dll" />
+    <Content Include="bin\Debug\Microsoft.SqlServer.Types.dll" />
+    <Content Include="bin\Debug\padrao_projetos.dll" />
+    <Content Include="bin\Debug\padrao_projetos.pdb" />
+    <Content Include="bin\Debug\pt\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="bin\Debug\pt\Microsoft.SqlServer.Types.resources.dll" />
+    <Content Include="bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll" />
+    <Content Include="bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll" />
+    <Content Include="bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="igreja2.csproj" />
+    <Content Include="igreja2.csproj.user" />
+    <Content Include="obj\Debug\igreja2.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\igreja2.exe" />
+    <Content Include="obj\Debug\igreja2.pdb" />
+    <Content Include="obj\Debug\TempPE\igreja2DataSet.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\igreja2DataSet1.Designer.cs.dll" />
+    <Content Include="obj\Release\TempPE\igreja2DataSet.Designer.cs.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\de\" />
+    <Folder Include="bin\Release\es\" />
+    <Folder Include="bin\Release\fr\" />
+    <Folder Include="bin\Release\it\" />
+    <Folder Include="bin\Release\ja\" />
+    <Folder Include="bin\Release\ko\" />
+    <Folder Include="bin\Release\pt\" />
+    <Folder Include="bin\Release\ru\" />
+    <Folder Include="bin\Release\zh-Hans\" />
+    <Folder Include="bin\Release\zh-Hant\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\business\business.csproj">
+      <Project>{695abc28-63ef-4c54-ac28-a27ca2496482}</Project>
+      <Name>business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\database\database.csproj">
+      <Project>{b9006c80-0805-4d80-b57d-4628105c0117}</Project>
+      <Name>database</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
+using System.Windows.Forms;
 
 namespace business.classes
 {
@@ -55,33 +56,94 @@ namespace business.classes
             bd = new BDcomum();
         }
 
-        public override string alterar()
+        public override string alterar(int id)
         {
-            throw new NotImplementedException();
+            update_padrao = "update chamada set Data_inicio='@data',"
+               + "Numero_chamada='@numero' where chamadaid='@id'";
+            Update = update_padrao.Replace("", Data_inicio.ToString());
+            Update = Update.Replace("@numero", Numero_chamada.ToString());
+            Update = Update.Replace("@id", id.ToString());
+            return bd.montar_sql(Update, null, null);
         }
 
-        public override string excluir()
+        public override string excluir(int id)
         {
-            throw new NotImplementedException();
+            delete_padrao = "delete from Chamada where chamadaid='@id' ";
+            Delete = delete_padrao.Replace("@id", id.ToString());
+            return bd.montar_sql(Delete, null, null);
         }
 
         public override Chamada recuperar(int id)
         {
             DateTime data = DateTime.Now.AddDays(-60);
-            select_padrao = "select * from pessoa inner join chamada on pes_id=hist_pessoa where Pessoa_id='@id'";
+            select_padrao = "select * from Chamada where chamadaid='@id'";
             Select = select_padrao.Replace("@id", data.ToString());
+            SqlCommand comando = new SqlCommand(Select, bd.obterconexao());
 
-            return this;
+            SqlDataReader dr = comando.ExecuteReader();
+
+            if (dr.HasRows == false)
+            {
+                return null;
+            }
+            else
+            {
+                try
+                {
+                    dr.Read();
+                    this.chamadaid = int.Parse(dr["chamadaid"].ToString());
+                    this.Data_inicio = Convert.ToDateTime(dr["Data_inicio"].ToString());
+                    this.Numero_chamada = int.Parse(dr["Numero_chamada"].ToString());
+                    this.Pessoa = this.Pessoa.recuperar(this.chamadaid);
+                    dr.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
+                finally
+                {
+                    bd.obterconexao().Close();
+                }
+
+                return this;
+            }
         }
 
         public override string salvar()
         {
-            throw new NotImplementedException();
+            
+            insert_padrao = "insert into Chamada"
+            + " (Data_inicio, Numero_chamada, chamadaid) values"
+            + " ('@data', '@numero', IDENT_CURRENT('Pessoa'))";
+            Insert = insert_padrao.Replace("@data", DateTime.Now.ToString());
+            Insert = Insert.Replace("@numero", Numero_chamada.ToString());
+            return Insert;
         }       
 
         public override IEnumerable<Chamada> recuperartodos()
         {
-            throw new NotImplementedException();
+            select_padrao = "select * from Celula";
+
+            SqlCommand comando = new SqlCommand(select_padrao, bd.obterconexao());
+
+            SqlDataReader dr = comando.ExecuteReader();
+
+            List<Chamada> lista = new List<Chamada>();
+
+            while (dr.Read())
+            {
+                Chamada cl = new Chamada();
+                cl.chamadaid = int.Parse(dr["chamadaid"].ToString());
+                cl.Data_inicio = Convert.ToDateTime(dr["Data_inicio"].ToString());
+                cl.Numero_chamada = int.Parse(dr["Numero_chamada"].ToString());
+                cl.Pessoa = cl.Pessoa.recuperar(cl.chamadaid);
+                lista.Add(cl);
+            }
+
+            return lista;
         }
     }
 }

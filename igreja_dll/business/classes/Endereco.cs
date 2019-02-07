@@ -37,13 +37,9 @@ namespace business.classes
 
             set
             {
-                if (value != "")
+                
                 pais = value;
-                else
-                {
-                    MessageBox.Show("país precisa ser preenchido corretamente!!!");
-                    pais = null;
-                }
+                
             }
         }
 
@@ -206,9 +202,9 @@ namespace business.classes
 
         public override string salvar()
         {
-            insert_padrao =         
-        "insert into endereco (Pais, Estado, Cidade, Bairro, Rua, Numero_casa, Cep, Complemento) values " +
-        " ('@pais', '@estado', '@cidade', '@bairro', '@rua', '@numero_casa', '@cep', '@complemento')";           
+            insert_padrao =
+        "insert into Endereco (Pais, Estado, Cidade, Bairro, Rua, Numero_casa, Cep, Complemento, EnderecoId) values " +
+        " ('@pais', '@estado', '@cidade', '@bairro', '@rua', '@numero_casa', '@cep', '@complemento', IDENT_CURRENT('Pessoa'))";           
          
             Insert = insert_padrao.Replace("@pais", Pais);
             Insert = Insert.Replace("@estado", Estado);
@@ -219,15 +215,15 @@ namespace business.classes
             Insert = Insert.Replace("@cep", Cep.ToString());
             Insert = Insert.Replace("@complemento", Complemento);
 
-            return bd.montar_sql(Insert, null, null);
+            return Insert;
         }
 
-        public override string alterar()
+        public override string alterar(int id)
         {
             throw new NotImplementedException();
         }
 
-        public override string excluir()
+        public override string excluir(int id)
         {
             throw new NotImplementedException();
         }

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace business.classes
 {
     [Table("Visitante")]    
-    public class Visitante : Pessoa
+    public class Visitante : Pessoa 
     {       
         private DateTime data_visita;
         
@@ -156,10 +156,10 @@ namespace business.classes
             return data_visita;
         }      
 
-        public override string alterar()
+        public override string alterar(int id)
         {
-             base.alterar();
-            update_padrao = "update visitante set visita = @data, condicao_religiosa = @condicao_religiosa inner join pessoa on pes_id=visi_pessoa " +
+             base.alterar(id);
+            update_padrao = "update Visitante set visita = @data, condicao_religiosa = @condicao_religiosa inner join pessoa on pes_id=visi_pessoa " +
                 "where pes_nome = @nome";
             Update = update_padrao.Replace("@nome", Nome);
             Update = Update.Replace("@data", data_visita.ToString());
@@ -168,9 +168,9 @@ namespace business.classes
          return   bd.montar_sql(Update, null, null);
         }
 
-        public override string excluir()
+        public override string excluir(int id)
         {
-            return base.excluir();
+            return base.excluir(id);
         }
 
         public override Pessoa recuperar(int id)
@@ -180,11 +180,13 @@ namespace business.classes
 
         public  Visitante recuperar_visitante(int id)
         {
-            Pessoa p = recuperar(id);
-            select_padrao = "select * from pessoa inner join endereco on pes_id=end_pessoa inner join telefone on pes_id=tel_pessoa @innerjoin where Pessoa_id='" + id + "'";            
-            Select = Select.Replace("@innerjoin", "inner join visitante on pes_id=visi_pessoa");
+            Pessoa p = recuperar(id);           
 
-            SqlCommand comando = new SqlCommand(Select, bd.obterconexao());
+            select_padrao = " select * from Pessoa as P inner join Endereco as E on P.Id=E.EnderecoId inner join Telefone as T on E.Id=T.telefoneid "
+            + " inner join Visitante as V on P.Id=V.Id "
+            + " where P.Id='" + id + "'";
+
+            SqlCommand comando = new SqlCommand(select_padrao, bd.obterconexao());
 
             SqlDataReader dr = comando.ExecuteReader();
 
@@ -245,11 +247,11 @@ namespace business.classes
         {
              base.salvar();
 
-            insert_padrao = "insert into visitante (Data_visita, Condicao_religiosa, id_pessoa) values" +
+            insert_padrao = "insert into Visitante (Data_visita, Condicao_religiosa, Id) values" +
                 " ('@data', '@condicao_religiosa', IDENT_CURRENT('Pessoa'))";
 
-            Insert = insert_padrao.Replace("@data", data_visita.ToString());
-            Insert = Insert.Replace("@condicao_religiosa", condicao_religiosa);
+            Insert = insert_padrao.Replace("@data", Data_visita.ToString());
+            Insert = Insert.Replace("@condicao_religiosa", Condicao_religiosa);
 
            return bd.montar_sql(Insert, null, null);
         }

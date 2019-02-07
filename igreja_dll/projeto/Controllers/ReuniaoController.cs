@@ -11,6 +11,7 @@ using repositorioEF;
 
 namespace projeto.Controllers
 {
+    [Authorize(Roles ="Reuniao")]
     public class ReuniaoController : Controller
     {
         private DB db = new DB();

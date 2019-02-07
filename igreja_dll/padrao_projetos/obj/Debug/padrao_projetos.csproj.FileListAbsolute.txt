@@ -5,6 +5,6 @@ C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja2\padrao_projetos\obj
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja2\padrao_projetos\obj\Debug\padrao_projetos.pdb
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\padrao_projetos\bin\Debug\padrao_projetos.dll
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\padrao_projetos\bin\Debug\padrao_projetos.pdb
-C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.csprojResolveAssemblyReference.cache
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.dll
 C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.pdb
+C:\Users\leand\Documents\Visual Studio 2015\Projects\igreja_dll\padrao_projetos\obj\Debug\padrao_projetos.csprojResolveAssemblyReference.cache

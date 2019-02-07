@@ -78,6 +78,7 @@ namespace projeto.Controllers
                     }
 
                     visitante.Chamada.Numero_chamada = db.celula.First(c => c.Celulaid == visitante.celula_).Pessoas.Count + 1;
+                    visitante.Falta = 0;
                     visitante.classe = "Visitante";
                     db.pessoas.Add(visitante);
                     db.SaveChanges();
@@ -152,6 +153,117 @@ namespace projeto.Controllers
                     visitante.classe = "Visitante";
                     db.Entry(visitante.Endereco).State = EntityState.Modified;
                     db.Entry(visitante.Telefone).State = EntityState.Modified;
+                    db.Entry(visitante).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                catch (Exception ex)
+                {
+                    ViewBag.email = User.Identity.GetUserName();
+                    ViewBag.error = "Você já foi cadastrado. " + ex.Message;
+                    ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome");
+                    return View(visitante);
+                }
+
+            }
+            ViewBag.Id = new SelectList(db.lider, "Liderid", "Liderid", visitante.Id);
+            ViewBag.Id = new SelectList(db.lider_treinamento, "Lidertreinamentoid", "Lidertreinamentoid", visitante.Id);
+            ViewBag.Id = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", visitante.Id);
+            ViewBag.Id = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", visitante.Id);
+            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome", visitante.celula_);
+            ViewBag.Id = new SelectList(db.endereco, "EnderecoId", "Pais", visitante.Id);
+            ViewBag.Id = new SelectList(db.telefone, "telefoneid", "Fone", visitante.Id);
+            return View(visitante);
+        }
+
+        public ActionResult Edit_falescimento(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Visitante visitante = db.visitante.Find(id);
+            if (visitante == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.email = User.Identity.GetUserName();
+            ViewBag.Id = new SelectList(db.lider, "Liderid", "Liderid", visitante.Id);
+            ViewBag.Id = new SelectList(db.lider_treinamento, "Lidertreinamentoid", "Lidertreinamentoid", visitante.Id);
+            ViewBag.Id = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", visitante.Id);
+            ViewBag.Id = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", visitante.Id);
+            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome", visitante.celula_);
+            ViewBag.Id = new SelectList(db.endereco, "EnderecoId", "Pais", visitante.Id);
+            ViewBag.Id = new SelectList(db.telefone, "telefoneid", "Fone", visitante.Id);
+            return View(visitante);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit_falescimento([Bind(Include = "Id,Nome,Data_nascimento,Rg,Cpf,Estado_civil,Sexo_masculino,Sexo_feminino,Falescimento,Status,Email,Falta,celula_,Img,imgtipo,classe,Data_visita,Condicao_religiosa,Endereco,Telefone")] Visitante visitante, HttpPostedFileBase upload)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {                    
+                    db.Entry(visitante).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                catch (Exception ex)
+                {
+                    ViewBag.email = User.Identity.GetUserName();
+                    ViewBag.error = "Você já foi cadastrado. " + ex.Message;
+                    ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome");
+                    return View(visitante);
+                }
+
+            }
+            ViewBag.Id = new SelectList(db.lider, "Liderid", "Liderid", visitante.Id);
+            ViewBag.Id = new SelectList(db.lider_treinamento, "Lidertreinamentoid", "Lidertreinamentoid", visitante.Id);
+            ViewBag.Id = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", visitante.Id);
+            ViewBag.Id = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", visitante.Id);
+            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome", visitante.celula_);
+            ViewBag.Id = new SelectList(db.endereco, "EnderecoId", "Pais", visitante.Id);
+            ViewBag.Id = new SelectList(db.telefone, "telefoneid", "Fone", visitante.Id);
+            return View(visitante);
+        }
+
+        public ActionResult Edit_falta(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Visitante visitante = db.visitante.Find(id);
+            if (visitante == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.email = User.Identity.GetUserName();
+            ViewBag.Id = new SelectList(db.lider, "Liderid", "Liderid", visitante.Id);
+            ViewBag.Id = new SelectList(db.lider_treinamento, "Lidertreinamentoid", "Lidertreinamentoid", visitante.Id);
+            ViewBag.Id = new SelectList(db.supervisor, "Supervisorid", "Supervisorid", visitante.Id);
+            ViewBag.Id = new SelectList(db.supervisor_treinamento, "Supervisortreinamentoid", "Supervisortreinamentoid", visitante.Id);
+            ViewBag.celula_ = new SelectList(db.celula, "Celulaid", "Cel_nome", visitante.celula_);
+            ViewBag.Id = new SelectList(db.endereco, "EnderecoId", "Pais", visitante.Id);
+            ViewBag.Id = new SelectList(db.telefone, "telefoneid", "Fone", visitante.Id);
+            return View(visitante);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit_falta([Bind(Include = "Id,Nome,Data_nascimento,Rg,Cpf,Estado_civil,Sexo_masculino,Sexo_feminino,Falescimento,Status,Email,Falta,celula_,Img,imgtipo,classe,Data_visita,Condicao_religiosa,Endereco,Telefone")] Visitante visitante, HttpPostedFileBase upload)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    visitante.Falta += 1;
                     db.Entry(visitante).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");

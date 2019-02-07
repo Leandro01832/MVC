@@ -213,6 +213,7 @@
     <Compile Include="Controllers\Membro_ReconciliacaoController.cs" />
     <Compile Include="Controllers\Membro_TransferenciaController.cs" />
     <Compile Include="Controllers\MinisterioController.cs" />
+    <Compile Include="Controllers\PessoaController.cs" />
     <Compile Include="Controllers\ReuniaoController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VisitanteController.cs" />
@@ -526,6 +527,15 @@
     <Content Include="Views\Historico\Details.cshtml" />
     <Content Include="Views\Historico\Edit.cshtml" />
     <Content Include="Views\Historico\Index.cshtml" />
+    <Content Include="Views\Visitante\Edit_falescimento.cshtml" />
+    <Content Include="Views\Visitante\Edit_falta.cshtml" />
+    <Content Include="Views\Pessoa\Create.cshtml" />
+    <Content Include="Views\Pessoa\Delete.cshtml" />
+    <Content Include="Views\Pessoa\Details.cshtml" />
+    <Content Include="Views\Pessoa\Edit.cshtml" />
+    <Content Include="Views\Pessoa\Index.cshtml" />
+    <Content Include="Views\Pessoa\Edit_falescimento.cshtml" />
+    <Content Include="Views\Pessoa\Edit_falta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
